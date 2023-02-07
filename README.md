@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setting up the amplify folder
+1. Delete amplify folder in the project directory
+2. Run `npm install -g @aws-amplify/cli`
+3. Run `amplify pull` (if there is a security error try `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted`)
+4. Enter AccessKey and SecretKey
+5. Select the first region choice
+6. Select project hms
+7. Configure as Javascript and React
+
 ## Available Scripts
 
 In the project directory, you can run:

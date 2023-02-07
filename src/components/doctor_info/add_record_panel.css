@@ -1,0 +1,75 @@
+#outer-box {
+    background-color: #BDC3CB;
+    padding: 1em 1em 1em 1em;
+    border-radius: 1em;
+}
+
+#inner-box {
+    background-color: #EDE7DC;
+    padding: 2.5em 0em 2.5em 0em;
+    display: inline-block;
+    border-radius: 1em;
+}
+
+form {
+    margin: 1em 10em 1em 1em;
+}
+
+label {
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.2em;
+    margin-right: 1em;
+    display: inline-block;
+    text-align: right;
+    width: 3em;
+    vertical-align: top;
+}
+
+.form-div {
+    margin: 1em 2em 1em 2em;
+}
+
+button {
+    color: #FFFFFF;
+    background-color: #153243;
+    padding: 0.3em 1.3em 0.3em 1.3em;
+    margin-right: 0%;
+    margin-left: 70%;
+}
+
+#patient-select {
+    width: 15em;
+}
+
+#subject-input {
+    width: 15em;
+}
+
+#log-input {
+    width: 15em;
+    height: 10em;
+    background-color: #FFFFFF ;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000; 
+}
+
+input {
+    background-color: #FFFFFF ;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000;   
+}
+
+select {
+    background-color: #FFFFFF ;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000;
+}
+
+

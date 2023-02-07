@@ -1,0 +1,48 @@
+#outer-box {
+    background-color: #BDC3CB;
+    padding: 1em 1em 1em 1em;
+    border-radius: 1em;
+}
+
+#inner-box {
+    background-color: #EDE7DC;
+    padding: 2.5em 2.5em 2.5em 2.5em;
+    display: inline-block;
+    border-radius: 1em;
+    
+}
+
+#input-field {
+    background-color: #FFFFFF ;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000;
+}
+
+#patient-id-label {
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.2em;
+    margin-right: 0.2em;
+}
+
+#add-button {
+    background-color: #32CD32;
+}
+
+#remove-button {
+    background-color: #FF0000;
+}
+
+form {
+    float: left;
+}
+
+button {
+    color:#000000;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 1em 0.2em 1em;
+}
+
