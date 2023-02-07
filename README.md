@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Setting up the amplify folder
+## Setting up the amplify folder (Do this before testing)
 1. Delete amplify folder in the project directory
 2. Run `npm install -g @aws-amplify/cli`
 3. Run `amplify pull` (if there is a security error try `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted`)
