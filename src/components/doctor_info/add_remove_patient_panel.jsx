@@ -1,7 +1,6 @@
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import './add_remove_patient_panel.css'
 
-function add_remove_patient_panel({user}) {
+function add_remove_patient_panel({user = {}}) {
     
     const addPatient = () => {
         console.log('Doctor "' + user.username + '" has added patient with ID "' + document.getElementById('input-field').value + '"')
@@ -29,4 +28,4 @@ function add_remove_patient_panel({user}) {
     )
 }
 
-export default withAuthenticator(add_remove_patient_panel)
+export default add_remove_patient_panel

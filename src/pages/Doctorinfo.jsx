@@ -36,9 +36,9 @@ function Doctorinfo({ signOut, user}) {
             <Subtitle title='General Info:' />
             <DoctorInfo doctorInfo={res.doctorInfo}/>
             <Subtitle title='Add/Remove Patient:' />
-            <AddPatient />
+            <AddPatient user={user}/>
             <Subtitle title='Add Record:' />
-            <AddRecord patientList={res.patientList}/>
+            <AddRecord user={user} patientList={res.patientList}/>
         </ProfileLayout>
     </div>
   )

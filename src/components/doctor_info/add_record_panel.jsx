@@ -1,7 +1,6 @@
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import './add_record_panel.css'
 
-function AddRecordPanel ({user, patientList = []}) {
+function AddRecordPanel ({user = {}, patientList = []}) {
 
     const postRecord = () => {
         let record = {
@@ -50,4 +49,4 @@ function AddRecordPanel ({user, patientList = []}) {
 
 }
 
-export default withAuthenticator(AddRecordPanel)
+export default AddRecordPanel
