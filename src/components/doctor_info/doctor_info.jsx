@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import './doctor_info.css'
 import pfp from './user_pic.png'

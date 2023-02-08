@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Line Coverage for Cypress Component Tests
+1. Run all compoent tests using `npx cypress run --component`
+2. Open `./coverage/lcov-report/index.html` to see coverage
+
+Documentation: [Guide Found Here](https://glebbahmutov.com/blog/component-code-coverage/)
+
+## Cypress Component Testing
+The component tests are files ending in `*.cy.jsx` and are contained in the same directory as the react component (`.jsx`) they test. A sample of the testing can be seen in `./src/components/sample/` where `sample.jsx` is tested by `sample.cy.jsx`.
+
+#### Steps to run tests:
+1. In the terminal run `npx cypress open`.
+2. A Cypress window should open showing, select the component testing option (this should be configured)
+3. Next select a browser (pick a browser you have already installed) and click the "start component testing in ..." button.
+4. Now in your selected browser you can select the component spec you would like to view.
+5. At this point you should be able to see the component tests.
+
 ## Setting up the amplify folder (Do this before testing)
 1. Delete amplify folder in the project directory
 2. Run `npm install -g @aws-amplify/cli`
