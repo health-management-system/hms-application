@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import './add_record_panel.css'
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import './add_remove_patient_panel.css'
 
