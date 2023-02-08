@@ -5,15 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { RouterProvider } from "react-router-dom";
-import router from './pages/routes';
 
 Amplify.configure(awsconfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <App />
   </React.StrictMode>
 );
 
