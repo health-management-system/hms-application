@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import './add_record_panel.css'
 
-export default function AddRecordPanel ({patientList = []}) {
-    const [patients, setPatients] = useState(patientList)
+function AddRecordPanel ({user, patientList = []}) {
 
     const postRecord = () => {
         let record = {
@@ -10,8 +9,7 @@ export default function AddRecordPanel ({patientList = []}) {
             subject: document.getElementById('subject-input').value,
             log: document.getElementById('log-input').value
         }
-        console.log('Record to be posted:')
-        console.log(record)
+        console.log('Doctor "' + user.username + '" has posted the following record:\n' + JSON.stringify(record))
         document.getElementById('patient-select').value = "default"
         document.getElementById('subject-input').value = ""
         document.getElementById('log-input').value = ""
@@ -24,11 +22,11 @@ export default function AddRecordPanel ({patientList = []}) {
                     <div className="form-div">
                         <label id='patient-label'>Patient</label>
                         <select id='patient-select' defaultValue={'default'}>
-                            <option  disabled label='Choose a patient' value='default'></option>
-                            {patients.map((option) => {
+                            <option  disabled label='Choose a patient' value='default' key='0'></option>
+                            {patientList.map((patientList) => {
                                 return (
-                                    <option key={patients.key} value={patients.value}>
-                                        {option.key}
+                                    <option key={patientList.key} value={patientList.value}>
+                                        {patientList.key}
                                     </option>
                                 )
                             })};
@@ -50,4 +48,6 @@ export default function AddRecordPanel ({patientList = []}) {
         </div>
     )
 
-} 
+}
+
+export default withAuthenticator(AddRecordPanel)
