@@ -32,12 +32,12 @@ describe('Tests for the Add Record Panel', () => {
         const user3 = {key: 'Ben', value: 'user3'}
 
         // Intiate the component with the patient list
-        cy.mount(<AddRecordPanel patientList={[{key: user1.key, value: user1.value},{key: user2.key, value: user2.value},{key: user3.key, value: user3.value}]}/>)
+        cy.mount(<AddRecordPanel user={{username: 'dakotawong'}} patientList={[{key: user1.key, value: user1.value},{key: user2.key, value: user2.value},{key: user3.key, value: user3.value}]}/>)
 
         // Check that the patient list has the correct options
-        cy.get('#patient-select').select(user1.key).should('have.value', user1.key)
-        cy.get('#patient-select').select(user2.key).should('have.value', user2.key)
-        cy.get('#patient-select').select(user3.key).should('have.value', user3.key)
+        cy.get('#patient-select').select(user1.key).should('have.value', user1.value)
+        cy.get('#patient-select').select(user2.key).should('have.value', user2.value)
+        cy.get('#patient-select').select(user3.key).should('have.value', user3.value)
 
     })
     it('Allows information to be entered and posted (should clear fields afterwards)', () => {

@@ -40,7 +40,7 @@ describe('Tests for the Doctor Info Panel', () => {
             lastName:'Smith',
             staffID: 'staff123456789',
             clinic: 'Waterloo Central',
-            specilaization: 'Eye Doctor',
+            specialization: 'Eye Doctor',
             email: 'jsmith@gmail.com',
             phoneNumber: '507-925-7788'
         }
@@ -53,7 +53,7 @@ describe('Tests for the Doctor Info Panel', () => {
         cy.get('#last-name').should('have.text', info.lastName)
         cy.get('#staff-id').should('have.text', info.staffID)
         cy.get('#clinic').should('have.text', info.clinic)
-        cy.get('#specialization').should('have.text', info.specilaization)
+        cy.get('#specialization').should('have.text', info.specialization)
         cy.get('#email').should('have.text', info.email)
         cy.get('#phone-number').should('have.text', info.phoneNumber)
     })

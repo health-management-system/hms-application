@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from '../shared/Navbar'
 
-function ProfileLayout({children}: {children: React.ReactNode}) {
+function ProfileLayout({children}) {
   return (
     <div className=' w-full'>
         <NavBar/>
