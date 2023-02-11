@@ -2,22 +2,22 @@ import React from 'react'
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import ProfileLayout from '../components/layouts/ProfileLayout'
 import Subtitle from '../components/shared/subtitle'
-import DoctorInfo from '../components/doctor_info/doctor_info'
+import DoctorInfo from '../components/shared/user_info'
 import AddPatient from '../components/doctor_info/add_remove_patient_panel'
 import AddRecord from '../components/doctor_info/add_record_panel'
 
 // Should request response from server using user.username
 // An example respose should be of the format:
 const res = {
-  doctorInfo: {
-    firstName: 'John',
-    lastName: 'Smith',
-    staffID: '1234567890',
-    clinic: 'Waterloo Central',
-    specialization: 'Eye Doctor',
-    email: 'jsmith@gmail.com',
-    phoneNumber: '517-223-3456'
-  },
+  doctorInfo: [
+    {label: 'FirstName:', value: 'John'},
+    {label:'LastName:', value: 'Smith'},
+    {label:'StaffID:', value: '1234567890'},
+    {label:'Clinic:', value: 'Waterloo Central'},
+    {label:'Specialization:', value: 'Eye Doctor'},
+    {label:'Email:', value: 'jsmith@gmail.com'},
+    {label:'PhoneNumber:', value: '517-223-3456'}
+  ],
   patientList: [{key: 'Maximus Valencia', value: 'Maximus Valencia'}, {key: 'Ava-Rose Shah', value: 'Ava-Rose Shah'}, 
                 {key: 'Abbey Bloggs', value: 'Abbey Bloggs'}, {key: 'Margaret Dunlap', value: 'Margaret Dunlap'},
                 {key: 'Jaden Rowland', value: 'Jaden Rowland'}, {key: 'Yasmin James', value: 'Yasmin James'},
