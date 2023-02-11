@@ -1,5 +1,5 @@
 import React from 'react'
-import axios, * as others from 'axios';
+import axios from 'axios';
 import {useState, useEffect} from 'react'
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import ProfileLayout from '../components/layouts/ProfileLayout'
@@ -7,7 +7,6 @@ import Subtitle from '../components/shared/subtitle'
 import DoctorInfo from '../components/shared/user_info'
 import AddPatient from '../components/doctor_info/add_remove_patient_panel'
 import AddRecord from '../components/doctor_info/add_record_panel'
-import { Lambda } from 'aws-sdk';
 
 // Should request response from server using user.username
 // An example respose should be of the format:
@@ -34,7 +33,6 @@ import { Lambda } from 'aws-sdk';
 // Reponse from the server is used to intialize react components
 function Doctorinfo({ signOut, user}) {
   const [doctorInfo, setDoctorInfo] = useState('')
-  const [catUrl, setCatUrl] = useState('');
   const [error, setError] = useState(false);
   const [state, setState] = useState('');
 
@@ -45,10 +43,9 @@ function Doctorinfo({ signOut, user}) {
     axios
       .get('https://1nof9m2hql.execute-api.us-east-1.amazonaws.com/default/statusCheck' + params)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setDoctorInfo(res.data)
         setState('success');
-        setCatUrl('https://cataas.com' + res.data.url);
       })
       .catch((err) => {
         console.error('Error:', err);
@@ -59,7 +56,13 @@ function Doctorinfo({ signOut, user}) {
 
   if(state === 'error') {
     return (
-      <h1>Axios Error</h1>
+      <h1>{error.toString()}</h1>
+    )
+  }
+
+  if(state === 'loading') {
+    return (
+      <h1>Loading...</h1>
     )
   }
 
