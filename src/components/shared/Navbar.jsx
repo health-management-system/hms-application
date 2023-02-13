@@ -50,7 +50,7 @@ function NavBar({ role }) {
                         : "translate-x-0"
                 } `}
             >
-                {location.pathname.toLowerCase().startsWith("/doctorinfo") ? (
+                {location.pathname.toLowerCase().startsWith("/doctor") ? (
                     <DoctorNavList onClick={closeNavBar} />
                 ) : (
                     <PatientNavList onClick={closeNavBar} />
