@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router";
 
 // import "./Navbar.css"
 
-function NavBar({role}) {
+function NavBar({ role }) {
     const [active, setActive] = useState(false);
     const navToggle = () => {
         setActive((prevState) => {
@@ -16,9 +16,9 @@ function NavBar({role}) {
 
     const closeNavBar = () => {
         setActive(false);
-    }
+    };
 
-    const location = useLocation()
+    const location = useLocation();
     return (
         <div className=" relative">
             {/* Navbar */}
@@ -50,57 +50,74 @@ function NavBar({role}) {
                         : "translate-x-0"
                 } `}
             >
-                {
-                    location.pathname.startsWith("/doctorinfo")? <DoctorNavList onClick={closeNavBar}/> : <PatientNavList onClick={closeNavBar}/>
-                }
+                {location.pathname.toLowerCase().startsWith("/doctorinfo") ? (
+                    <DoctorNavList onClick={closeNavBar} />
+                ) : (
+                    <PatientNavList onClick={closeNavBar} />
+                )}
             </div>
         </div>
     );
 }
 
-function DoctorNavList ({onClick}){
-    const doctorPath = "/doctorinfo"
-    const navigate = useNavigate()
+function DoctorNavList({ onClick }) {
+    const doctorPath = "/doctorinfo";
+    const navigate = useNavigate();
     const navigationHandler = (path) => {
-        return () =>{
-            navigate(doctorPath + path)
-            onClick()
-        }
-    }
+        return () => {
+            navigate(doctorPath + path);
+            onClick();
+        };
+    };
 
-    return  <ul className="space-y-6">
-    
-        <li className="group cursor-pointer space-y-3" onClick={navigationHandler("")}>
-            <h3>Home</h3>{" "}
-            <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
-        </li>
-        <li className="group cursor-pointer space-y-3" onClick={navigationHandler("/update")}>
-            <h3>Update Info</h3>{" "}
-            <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
-        </li>
-    </ul>
+    return (
+        <ul className="space-y-6">
+            <li
+                className="group cursor-pointer space-y-3"
+                onClick={navigationHandler("")}
+            >
+                <h3>Home</h3>{" "}
+                <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+            </li>
+            <li
+                className="group cursor-pointer space-y-3"
+                onClick={navigationHandler("/update")}
+            >
+                <h3>Update Info</h3>{" "}
+                <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+            </li>
+        </ul>
+    );
 }
 
-function PatientNavList ({onClick}) {
-const patientPath = "/patientinfo"
-const navigate = useNavigate()
-const navigationHandler = (path) => {
-    return () =>{
-        navigate(patientPath + path)
-        onClick();
-    }
-}
+function PatientNavList({ onClick }) {
+    const patientPath = "/patientinfo";
+    const navigate = useNavigate();
+    const navigationHandler = (path) => {
+        return () => {
+            navigate(patientPath + path);
+            onClick();
+        };
+    };
 
-return  <ul className="space-y-6">
-    <li className="group cursor-pointer space-y-3" onClick={navigationHandler("")}>
-        <h3>Profile</h3>{" "}
-        <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
-    </li>
-    <li className="group cursor-pointer space-y-3" onClick={navigationHandler("/update")}>
-        <h3>Update Info</h3>{" "}
-        <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
-    </li>
-</ul>
+    return (
+        <ul className="space-y-6">
+            <li
+                className="group cursor-pointer space-y-3"
+                onClick={navigationHandler("")}
+            >
+                <h3>Profile</h3>{" "}
+                <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+            </li>
+            <li
+                className="group cursor-pointer space-y-3"
+                onClick={navigationHandler("/update")}
+            >
+                <h3>Update Info</h3>{" "}
+                <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+            </li>
+        </ul>
+    );
 }
 
 export default NavBar;
