@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
+import { useLocation, useNavigate } from "react-router";
 
 // import "./Navbar.css"
 
-function NavBar() {
+function NavBar({role}) {
     const [active, setActive] = useState(false);
     const navToggle = () => {
         setActive((prevState) => {
@@ -12,6 +13,12 @@ function NavBar() {
             return !prevState;
         });
     };
+
+    const closeNavBar = () => {
+        setActive(false);
+    }
+
+    const location = useLocation()
     return (
         <div className=" relative">
             {/* Navbar */}
@@ -43,19 +50,57 @@ function NavBar() {
                         : "translate-x-0"
                 } `}
             >
-                <ul className="space-y-6">
-                    <li className="group cursor-pointer space-y-3">
-                        <h3>Make an Appointment</h3>{" "}
-                        <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
-                    </li>
-                    <li className="group cursor-pointer space-y-3">
-                        <h3>Get prescription</h3>{" "}
-                        <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
-                    </li>
-                </ul>
+                {
+                    location.pathname.startsWith("/doctorinfo")? <DoctorNavList onClick={closeNavBar}/> : <PatientNavList onClick={closeNavBar}/>
+                }
             </div>
         </div>
     );
+}
+
+function DoctorNavList ({onClick}){
+    const doctorPath = "/doctorinfo"
+    const navigate = useNavigate()
+    const navigationHandler = (path) => {
+        return () =>{
+            navigate(doctorPath + path)
+            onClick()
+        }
+    }
+
+    return  <ul className="space-y-6">
+    
+        <li className="group cursor-pointer space-y-3" onClick={navigationHandler("")}>
+            <h3>Home</h3>{" "}
+            <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+        </li>
+        <li className="group cursor-pointer space-y-3" onClick={navigationHandler("/update")}>
+            <h3>Update Info</h3>{" "}
+            <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+        </li>
+    </ul>
+}
+
+function PatientNavList ({onClick}) {
+const patientPath = "/patientinfo"
+const navigate = useNavigate()
+const navigationHandler = (path) => {
+    return () =>{
+        navigate(patientPath + path)
+        onClick();
+    }
+}
+
+return  <ul className="space-y-6">
+    <li className="group cursor-pointer space-y-3" onClick={navigationHandler("")}>
+        <h3>Profile</h3>{" "}
+        <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+    </li>
+    <li className="group cursor-pointer space-y-3" onClick={navigationHandler("/update")}>
+        <h3>Update Info</h3>{" "}
+        <div className="group-hover:w-full w-0 duration-100 ease-in h-[3px] bg-priCol" />
+    </li>
+</ul>
 }
 
 export default NavBar;
