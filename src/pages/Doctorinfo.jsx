@@ -41,7 +41,7 @@ function Doctorinfo({ signOut, user}) {
     setState('loading...')
     const params = '?username=' + user.username
     axios
-      .get('https://1nof9m2hql.execute-api.us-east-1.amazonaws.com/default/statusCheck' + params)
+      .get('https://4tcdbtc055.execute-api.us-east-1.amazonaws.com/doctorInfo' + params)
       .then((res) => {
         console.log(res.data);
         setDoctorInfo(res.data)
