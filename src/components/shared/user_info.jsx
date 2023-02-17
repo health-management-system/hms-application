@@ -8,7 +8,7 @@ export default function doctorInfo({ doctorInfo = [] }) {
           <ul>
             {doctorInfo.map((doctorInfo) => {
               return (
-                <li key={doctorInfo.label}> <label>{doctorInfo.label}</label> <span>{doctorInfo.value}</span>    </li>
+                <li key={doctorInfo.label}><label id={doctorInfo.label_id}>{doctorInfo.label}</label><span id={doctorInfo.value_id}>{doctorInfo.value}</span></li>
               ) 
             })}
           </ul>
