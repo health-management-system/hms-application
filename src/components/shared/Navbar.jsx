@@ -22,28 +22,43 @@ function NavBar({ role }) {
     return (
         <div className=" relative">
             {/* Navbar */}
-            <nav className=" w-full h-[8vh] bg-priCol flex items-center px-10 md:px-20">
+            <nav
+                data-cy="Navbar-container"
+                className=" w-full h-[8vh] bg-priCol flex items-center px-10 md:px-20"
+            >
                 <div className="Nav w-full  flex justify-between">
                     {/* Menu toggle */}
                     <div
+                        data-cy="Navbar-menu"
                         onClick={navToggle}
                         className="Nav__menu text-2xl text-white hover:cursor-pointer"
                     >
-                        {active ? <AiOutlineClose /> : <AiOutlineMenu />}
+                        {active ? (
+                            <AiOutlineClose data-cy="Navbar-menu-close" />
+                        ) : (
+                            <AiOutlineMenu data-cy="Navbar-menu-normal" />
+                        )}
                     </div>
 
-                    <div className="Nav__logout text-2xl text-white ">
+                    <div
+                        data-cy="Navbar-sign-out"
+                        className="Nav__logout text-2xl text-white "
+                    >
                         <FiLogOut />
                     </div>
                 </div>
             </nav>
             <div
+                data-cy={active ?"Navbar-background-on": "Navbar-background-off"}
                 className={` ${
-                    active ? "block" : "hidden"
+                    active
+                        ? "block"
+                        : "hidden"
                 } w-full h-[92vh] bg-black opacity-40 absolute`}
                 onClick={() => setActive(false)}
             ></div>
             <div
+            data-cy={active?"Navbar-sidebar-on" : "Navbar-sidebar-off"}
                 className={`Nav__sidemenu h-[92vh] w-[40vw] md:w-[30vw] absolute bg-secCol md:-left-[30vw] -left-[40vw] ease-out duration-300 p-10 ${
                     active
                         ? "translate-x-[40vw] md:translate-x-[30vw] active"
@@ -71,7 +86,7 @@ function DoctorNavList({ onClick }) {
     };
 
     return (
-        <ul className="space-y-6">
+        <ul data-cy="Navbar-sidebar-doctor" className="space-y-6">
             <li
                 className="group cursor-pointer space-y-3"
                 onClick={navigationHandler("")}
@@ -101,7 +116,7 @@ function PatientNavList({ onClick }) {
     };
 
     return (
-        <ul className="space-y-6">
+        <ul data-cy="Navbar-sidebar-patient"  className="space-y-6">
             <li
                 className="group cursor-pointer space-y-3"
                 onClick={navigationHandler("")}
