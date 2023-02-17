@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage";
 import PatientInfo from "./PatientInfo";
 import Doctorinfo from "./Doctorinfo";
 import Profile from "./PatientInfo/Profile";
+import Registration from "./PatientInfo/Registration";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
             element: <Profile/>,
         }, {
             path: "update/",
-            element: (<div>Update Form</div>)
+            element: <Registration />
         }]
     },
     {

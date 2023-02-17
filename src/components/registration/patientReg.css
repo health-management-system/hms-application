@@ -1,0 +1,38 @@
+#outer-box {
+    background-color: #BDC3CB;
+    padding: 1% 1% 1% 1%;
+    border-radius: 1em;
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#inner-box {
+    background-color: #EDE7DC;
+    padding: 1% 1% 1% 1%;
+    display: inline-block;
+    border-radius: 1em;
+    width: 99%
+}
+
+label {
+    width: 20%;
+}
+
+input {
+    display: inline;
+    width: 60%;
+    margin-left: 0.7em;
+}
+
+.field-div {
+    display: block;
+    padding-top: 0.5em;;
+    padding-bottom: 0.5em;
+    width: 100%
+}
+
+#submit-button {
+    margin-left: 85%;
+}

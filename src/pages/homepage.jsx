@@ -13,16 +13,24 @@ Amplify.configure(awsExports);
 function Homepage({ signOut, user}) {
 
     let navigate = useNavigate()
+    
     const doctorInfo = () => {
         let path = '/doctorInfo'
         navigate(path)
     }
+
+    const patientInfo = () => {
+      let path = '/patientInfo'
+      navigate(path)
+    }
+
 
   return (
     <div>
         <h1>Hello {user.username}</h1>
         <button onClick={signOut}>Sign out</button>
         <button onClick={doctorInfo}>Doctor Info Page</button>
+        <button onClick={patientInfo}>Patient Info Page</button>
     </div>
 
   );
