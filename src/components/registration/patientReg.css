@@ -33,6 +33,6 @@ input {
     width: 100%
 }
 
-button {
+#submit-button {
     margin-left: 85%;
 }
