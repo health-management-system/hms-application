@@ -10,13 +10,13 @@ import AddRecord from '../components/doctor_info/add_record_panel'
 // An example respose should be of the format:
 const res = {
   doctorInfo: [
-    {label: 'FirstName:', value: 'John'},
-    {label:'LastName:', value: 'Smith'},
-    {label:'StaffID:', value: '1234567890'},
+    {label: 'First Name:', value: 'John'},
+    {label:'Last Name:', value: 'Smith'},
+    {label:'Staff ID:', value: '1234567890'},
     {label:'Clinic:', value: 'Waterloo Central'},
     {label:'Specialization:', value: 'Eye Doctor'},
     {label:'Email:', value: 'jsmith@gmail.com'},
-    {label:'PhoneNumber:', value: '517-223-3456'}
+    {label:'Phone Number:', value: '517-223-3456'}
   ],
   patientList: [{key: 'Maximus Valencia', value: 'Maximus Valencia'}, {key: 'Ava-Rose Shah', value: 'Ava-Rose Shah'}, 
                 {key: 'Abbey Bloggs', value: 'Abbey Bloggs'}, {key: 'Margaret Dunlap', value: 'Margaret Dunlap'},

@@ -39,7 +39,7 @@ const patientInfo = [
     {label:'Address:', value: '8 Ring Rd, Waterloo ON'},
     {label:'Phone Number:', value: '517-733-2895'},
     {label:'Postal Code:', value: 'K6F Y9D'},
-    {label:'PHealth Card No.:', value: '78549854985'}
+    {label:'Health Card No:', value: '78549854985'}
 ]
 
 function Profile() {
@@ -61,7 +61,7 @@ const [isLoadingPH, setIsLoadingPH] = useState<boolean>(true);
                         history={patientHistory}
                         errorLoadingHistory={false}
                     />
-                </div>
+    </div>
   )
 }
 
