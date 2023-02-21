@@ -3,12 +3,12 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import ProfileLayout from "../components/layouts/ProfileLayout";
 import { Outlet } from "react-router";
 
-function PatientInfo({user}) {
+function PatientInfo({user, signOut}) {
    
 
     return (
         <div className="w-full min-h-screen">
-            <ProfileLayout>
+            <ProfileLayout signOut={signOut}>
                 <Outlet context={user}/>
             </ProfileLayout>
         </div>

@@ -7,7 +7,7 @@ import { Outlet } from "react-router";
 function DoctorInfo({ signOut, user}) {
     return (
         <div>
-            <ProfileLayout>
+            <ProfileLayout signOut={signOut}>
                 <Outlet context={user}/>
             </ProfileLayout>
         </div>

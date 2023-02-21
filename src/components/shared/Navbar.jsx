@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router";
 
 // import "./Navbar.css"
 
-function NavBar({ role }) {
+function NavBar({ role, signOut }) {
     const [active, setActive] = useState(false);
     const navToggle = () => {
         setActive((prevState) => {
@@ -42,7 +42,8 @@ function NavBar({ role }) {
 
                     <div
                         data-cy="Navbar-sign-out"
-                        className="Nav__logout text-2xl text-white "
+                        className="Nav__logout text-2xl text-white hover:cursor-pointer"
+                        onClick={signOut}
                     >
                         <FiLogOut />
                     </div>
