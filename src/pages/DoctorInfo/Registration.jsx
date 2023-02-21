@@ -1,4 +1,4 @@
-import Registration from '../../components/registration/patientReg';
+import Registration from '../../components/registration/doctorReg';
 import { useOutletContext } from 'react-router-dom'
 
 function RegistrationPage() {

@@ -1,23 +1,15 @@
 import { useState } from "react";
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import PaginationNavigator from '../components/PatientInfo/PaginationNavigator';
-import {
-    PatientHistoryTable,
-    PatientRecords,
-} from "../components/PatientInfo/PatientHistoryTable";
 import ProfileLayout from "../components/layouts/ProfileLayout";
-import Subtitle from "../components/shared/subtitle";
 import { Outlet } from "react-router";
 
-
-
-function PatientInfo() {
+function PatientInfo({user}) {
    
 
     return (
         <div className="w-full min-h-screen">
             <ProfileLayout>
-                <Outlet/>
+                <Outlet context={user}/>
             </ProfileLayout>
         </div>
     );

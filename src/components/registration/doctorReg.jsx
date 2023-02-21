@@ -1,41 +1,38 @@
 import React from 'react'
 import './patientReg.css'
 
-function registerPatient ({user}) {
+function registerDoctor ({user}) {
 
-console.log(user.username)
+const username = user.username
 
 const register = () => {
         const firstname = document.getElementById('firstname').value
         document.getElementById('firstname').value = ''
         const lastname = document.getElementById('lastname').value
         document.getElementById('lastname').value = ''
-        const dateOfBirth = document.getElementById('dateOfBirth').value
-        document.getElementById('dateOfBirth').value = ''
+        const staffid = document.getElementById('staffid').value
+        document.getElementById('staffid').value = ''
+        const clinic = document.getElementById('clinic').value
+        document.getElementById('clinic').value = ''
+        const specialization = document.getElementById('specialization').value
+        document.getElementById('specialization').value = ''
         const email = document.getElementById('email').value
         document.getElementById('email').value = ''
         const phoneNumber = document.getElementById('phoneNumber').value
         document.getElementById('phoneNumber').value = ''
-        const address = document.getElementById('address').value
-        document.getElementById('address').value = ''
-        const postalCode = document.getElementById('postalCode').value
-        document.getElementById('postalCode').value = ''
-        const healthCardNumber = document.getElementById('healthCardNumber').value
-        document.getElementById('healthCardNumber').value = ''
 
-        const patient = {
-            firstname,
-            lastname,
-            dateOfBirth,
-            email,
-            phoneNumber,
-            address,
-            postalCode,
-            healthCardNumber
+        const doctor = {
+            firstname: firstname,
+            lastname: lastname,
+            staffid: staffid,
+            clinic: clinic,
+            specialization: specialization,
+            email: email,
+            phoneNumber: phoneNumber
         }
 
         // Post to the server
-        console.log(patient)
+        console.log(doctor)
 }
 
     return (
@@ -49,9 +46,17 @@ const register = () => {
                     <label>Last Name:</label>
                     <input type='text' id='lastname' placeholder='Enter Last Name'/>
                 </div>
-                <div key='dob' className='field-div'>
-                    <label>Date of Birth:</label>
-                    <input type='text' id='dateOfBirth' placeholder='Enter Date of Birth'/>
+                <div key='staffid' className='field-div'>
+                    <label>Staff ID:</label>
+                    <input type='text' id='staffid' placeholder='Enter Staff ID'/>
+                </div>
+                <div key='clinic' className='field-div'>
+                    <label>Clinic:</label>
+                    <input type='text' id='clinic' placeholder='Enter Clinic'/>
+                </div>
+                <div key='specialization' className='field-div'>
+                    <label>Specialization:</label>
+                    <input type='text' id='specialization' placeholder='Enter Specialization'/>
                 </div>
                 <div key='email' className='field-div'>
                     <label>Email:</label>
@@ -61,18 +66,6 @@ const register = () => {
                     <label>Phone Number:</label>
                     <input type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
                 </div>
-                <div key='address' className='field-div'>
-                    <label>Address</label>
-                    <input type='text' id='address' placeholder='Enter Address'/>
-                </div>
-                <div key='postalcode' className='field-div'>
-                    <label>Postal Code:</label>
-                    <input type='text' id='postalCode' placeholder='Enter Postal Code'/>
-                </div>
-                <div key='healthcard' className='field-div'>
-                    <label>Health Card Number:</label>
-                    <input type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
-                </div>
                 <div key='submit' className='field-div'>
                     <button id='submit-button' onClick={register}>Submit</button>
                 </div>
@@ -81,4 +74,4 @@ const register = () => {
     )
 }
 
-export default registerPatient
+export default registerDoctor

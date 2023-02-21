@@ -1,35 +1,33 @@
 import React from 'react'
-import Registration from './patientReg'
+import Registration from './doctorReg'
 
 const user = {
     username: "dakotawong"
 }
 
-describe('Tests for Patient Registration Component', () => {
+describe('Tests for Doctor Registration Component', () => {
     it('Renders the component', () => {
-        cy.mount(<Registration user={user} />)
+        cy.mount(<Registration user={user}/>)
     })
     it('Clears inputs after clicking the submit button', () => {
-        cy.mount(<Registration user={user} />)
+        cy.mount(<Registration user={user}/>)
         // Enter data
         cy.get('#firstname').type('John')
         cy.get('#lastname').type('Doe')
-        cy.get('#dateOfBirth').type('2023-02-17')
+        cy.get('#staffid').type('423423')
+        cy.get('#clinic').type('johnd@gmail.com')
+        cy.get('#specialization').type('Eye Doctor')
         cy.get('#email').type('johnd@gmail.com')
         cy.get('#phoneNumber').type('516-353-3454')
-        cy.get('#address').type('8 Ring rd')
-        cy.get('#postalCode').type('N2L 8X3')
-        cy.get('#healthCardNumber').type('9459834298j')
         // Submit data
         cy.get('#submit-button').click()
         // Check fields are cleared
         cy.get('#firstname').should("have.text", "")
         cy.get('#lastname').should("have.text", "")
-        cy.get('#dateOfBirth').should("have.text", "")
+        cy.get('#staffid').should("have.text", "")
+        cy.get('#clinic').should("have.text", "")
+        cy.get('#specialization').should("have.text", "")
         cy.get('#email').should("have.text", "")
         cy.get('#phoneNumber').should("have.text", "")
-        cy.get('#address').should("have.text", "")
-        cy.get('#postalCode').should("have.text", "")
-        cy.get('#healthCardNumber').should("have.text", "")
     })
 })

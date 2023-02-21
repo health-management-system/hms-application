@@ -3,8 +3,11 @@ import Homepage from './homepage'
 import ErrorPage from "./ErrorPage";
 import PatientInfo from "./PatientInfo";
 import Doctorinfo from "./Doctorinfo";
-import Profile from "./PatientInfo/Profile";
-import Registration from "./PatientInfo/Registration";
+import PatientProfile from "./PatientInfo/Profile";
+import PatientRegistration from "./PatientInfo/Registration";
+import DoctorProfile from "./DoctorInfo/Profile";
+import DoctorRegistration from "./DoctorInfo/Registration"
+
 
 const router = createBrowserRouter([
     {
@@ -18,16 +21,22 @@ const router = createBrowserRouter([
         element: <PatientInfo />,
         children: [{
             path: "",
-            element: <Profile/>,
+            element: <PatientProfile/>,
         }, {
             path: "update/",
-            element: <Registration />
+            element: <PatientRegistration />
         }]
     },
     {
         path: "/doctorinfo",
         element: <Doctorinfo />,
-
+        children: [{
+            path: "",
+            element: <DoctorProfile/>,
+        }, {
+            path: "update/",
+            element: <DoctorRegistration />
+        }]
     }
     
     
