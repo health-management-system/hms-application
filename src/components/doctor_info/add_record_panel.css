@@ -1,26 +1,6 @@
-#outer-box {
-    background-color: #BDC3CB;
-    padding: 1% 1% 1% 1%;
-    border-radius: 1em;
-    width: 90%;
-    margin-top: 1%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
+/* add_record_panel component */
 
-#inner-box {
-    background-color: #EDE7DC;
-    padding: 2.5em 0em 2.5em 0em;
-    display: inline-block;
-    border-radius: 1em;
-    width: 99%;
-}
-
-form {
-    margin: 1em 10em 1em 1em;
-}
-
-label {
+.add-record-label {
     color: #000000;
     font-weight: 500;
     font-size: 1.2em;
@@ -29,55 +9,46 @@ label {
     text-align: right;
     width: 3em;
     vertical-align: top;
-}
-
-.form-div {
-    margin: 1em 2em 1em 2em;
-}
-
-button {
-    color: #FFFFFF;
-    background-color: #153243;
-    padding: 0.3em 1.3em 0.3em 1.3em;
-}
-
-#patient-select {
-    width: 20%;
-}
-
-#subject-input {
-    width: 30%
-}
-
-#log-input {
-    width: 45%;
+  }
+  
+  .add-record-select {
+    background-color: #FFFFFF ;
+    width: 40%;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000;
+  }
+  
+  .add-record-input {
+    background-color: #FFFFFF ;
+    width: 80%;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000;   
+  }
+  
+  .add-record-textarea {
+    width: 80%;
     height: 10em;
     background-color: #FFFFFF ;
     margin-left: 0.7em;
     border-radius: 1em;
     padding: 0.5em 0.5em 0.5em 0.5em;
     color: #000000; 
-}
-
-input {
-    background-color: #FFFFFF ;
-    margin-left: 0.7em;
-    border-radius: 1em;
-    padding: 0.2em 0.3em 0.2em 0.3em;
-    color: #000000;   
-}
-
-select {
-    background-color: #FFFFFF ;
-    margin-left: 0.7em;
-    border-radius: 1em;
-    padding: 0.2em 0.3em 0.2em 0.3em;
-    color: #000000;
-}
-
-#button-div {
-    margin-left: 50%;
-}
-
-
-
+  }
+  
+  .add-record-div {
+    margin: 1em 0em 1em 0em;
+  }
+  
+  .add-record-button {
+    color: #FFFFFF;
+    background-color: #153243;
+    padding: 0.3em 1.3em 0.3em 1.3em;
+  }
+  
+  .add-record-button-div {
+    margin-left: 90%;
+  }

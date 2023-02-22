@@ -31,14 +31,14 @@ const res = {
 function Doctorinfo() {
     const user = useOutletContext();
     return (
-        <div className='w-full min-h-screen'>
-            <Subtitle title='General Info:' />
-            <DoctorInfo doctorInfo={res.doctorInfo}/>
-            <Subtitle title='Add/Remove Patient:' />
-            <AddPatient user={user}/>
-            <Subtitle title='Add Record:' />
-            <AddRecord user={user} patientList={res.patientList}/>
-        </div>
+      <div className="md:px-20 px-10 py-10">
+        <Subtitle title='General Info:' />
+        <DoctorInfo doctorInfo={res.doctorInfo}/>
+        <Subtitle title='Add/Remove Patient:' />
+        <AddPatient user={user}/>
+        <Subtitle title='Add Record:' />
+        <AddRecord user={user} patientList={res.patientList}/>
+      </div>
     )
 }
 

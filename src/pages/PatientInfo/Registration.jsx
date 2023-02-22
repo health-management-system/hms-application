@@ -1,10 +1,14 @@
 import Registration from '../../components/registration/patientReg';
-import { useOutletContext } from 'react-router-dom'
+import Subtitle from '../../components/shared/subtitle';
+import { useOutletContext } from 'react-router-dom';
 
 function RegistrationPage() {
   const user = useOutletContext();
   return (
-    <Registration user={user}/>
+    <div className="md:px-20 px-10 py-10">
+      <Subtitle title='Update Info:' />
+      <Registration user={user}/>
+    </div>
   )
 }
 

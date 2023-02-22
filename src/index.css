@@ -16,6 +16,31 @@ body {
     font-family: "Poppins";
 }
 
+/* General DOM Elements*/
+
+.outer-box {
+  background-color: #BDC3CB;
+  padding: 1% 1% 1% 1%;
+  border-radius: 1em;
+  width: 100%;
+}
+
+.inner-box {
+  background-color: #EDE7DC;
+  display: inline-block;
+  border-radius: 1em;
+  width: 99%;
+  padding: 3% 5% 3% 5%;
+}
+
+/* Buttons for homepage (purely for testing) */
+.test-button {
+  color: #FFFFFF;
+  background-color: #153243;
+  padding: 0.3em 1.3em 0.3em 1.3em;
+  margin: 1em 1em 1em 1em;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
