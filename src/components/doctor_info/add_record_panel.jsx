@@ -17,12 +17,12 @@ function AddRecordPanel ({user = {}, patientList = []}) {
     }
 
     return (
-        <div id='outer-box'>
-            <div id='inner-box'>
+        <div className='outer-box'>
+            <div className='inner-box'>
                 <form>
-                    <div className="form-div">
-                        <label id='patient-label'>Patient</label>
-                        <select id='patient-select' defaultValue={'default'}>
+                    <div className="add-record-div">
+                        <label className='add-record-label' id='patient-label'>Patient</label>
+                        <select className='add-record-select' id='patient-select' defaultValue={'default'}>
                             <option  disabled label='Choose a patient' value='default' key='0'></option>
                             {patientList.map((patientList) => {
                                 return (
@@ -33,17 +33,17 @@ function AddRecordPanel ({user = {}, patientList = []}) {
                             })};
                         </select>
                     </div>
-                    <div className="form-div">
-                        <label id='subject-label'>Subject</label>
-                        <input type='text' id='subject-input'></input>
+                    <div className="add-record-div">
+                        <label className='add-record-label' id='subject-label'>Subject</label>
+                        <input type='text' className='add-record-input' id='subject-input' placeholder='Enter a Subject'></input>
                     </div>
-                    <div className="form-div">
-                        <label id='log-label'>Log</label>
-                        <textarea type='text' id='log-input'></textarea>
+                    <div className="add-record-div">
+                        <label className='add-record-label' id='log-label'>Log</label>
+                        <textarea type='text' className='add-record-textarea' id='log-input'></textarea>
                     </div>
                 </form>
-                <div id='button-div'>
-                    <button onClick={postRecord}>Post</button>
+                <div className='add-record-button-div' id='button-div'>
+                    <button className='add-record-button' onClick={postRecord}>Post</button>
                 </div>
             </div>
         </div>

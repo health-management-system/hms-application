@@ -1,0 +1,29 @@
+/* patientReg and doctorReg components */
+.registration-div {
+    display: block;
+    padding-top: 0.5em;;
+    padding-bottom: 0.5em;
+    width: 100%
+  }
+  
+  .registration-label {
+    width: 200px;
+    display: inline-block;
+    text-align: right;
+  }
+  
+  .registration-input {
+    display: inline;
+    width: 60%;
+    margin-left: 0.7em;
+    border-radius: 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    color: #000000;  
+  }
+  
+  .registration-button {
+    margin-left: 85%;
+    color: #FFFFFF;
+    background-color: #153243;
+    padding: 0.3em 1.3em 0.3em 1.3em;
+  }

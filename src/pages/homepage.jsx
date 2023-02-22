@@ -28,9 +28,9 @@ function Homepage({ signOut, user}) {
   return (
     <div>
         <h1>Hello {user.username}</h1>
-        <button onClick={signOut}>Sign out</button>
-        <button onClick={doctorInfo}>Doctor Info Page</button>
-        <button onClick={patientInfo}>Patient Info Page</button>
+        <button className='test-button' onClick={signOut}>Sign out</button>
+        <button className='test-button' onClick={doctorInfo}>Doctor Info Page</button>
+        <button className='test-button' onClick={patientInfo}>Patient Info Page</button>
     </div>
 
   );

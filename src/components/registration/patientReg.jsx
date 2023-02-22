@@ -1,11 +1,12 @@
 import React from 'react'
-import './patientReg.css'
+import './registration.css'
 
 function registerPatient ({user}) {
 
-console.log(user.username)
+    const username = user.username
+    console.log(username)
 
-const register = () => {
+    const register = () => {
         const firstname = document.getElementById('firstname').value
         document.getElementById('firstname').value = ''
         const lastname = document.getElementById('lastname').value
@@ -36,48 +37,48 @@ const register = () => {
 
         // Post to the server
         console.log(patient)
-}
+    }
 
     return (
-        <div id = 'outer-box'>
-            <div id = 'inner-box'>
-                <div key='firstname' className='field-div'>
-                    <label>First Name:</label>
-                    <input type='text' id='firstname' placeholder='Enter First Name'/>
-                </div>
-                <div key='lastname' className='field-div'>
-                    <label>Last Name:</label>
-                    <input type='text' id='lastname' placeholder='Enter Last Name'/>
-                </div>
-                <div key='dob' className='field-div'>
-                    <label>Date of Birth:</label>
-                    <input type='text' id='dateOfBirth' placeholder='Enter Date of Birth'/>
-                </div>
-                <div key='email' className='field-div'>
-                    <label>Email:</label>
-                    <input type='text' id='email' placeholder='Enter Email'/>
-                </div>
-                <div key='phonenumber' className='field-div'>
-                    <label>Phone Number:</label>
-                    <input type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
-                </div>
-                <div key='address' className='field-div'>
-                    <label>Address</label>
-                    <input type='text' id='address' placeholder='Enter Address'/>
-                </div>
-                <div key='postalcode' className='field-div'>
-                    <label>Postal Code:</label>
-                    <input type='text' id='postalCode' placeholder='Enter Postal Code'/>
-                </div>
-                <div key='healthcard' className='field-div'>
-                    <label>Health Card Number:</label>
-                    <input type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
-                </div>
-                <div key='submit' className='field-div'>
-                    <button id='submit-button' onClick={register}>Submit</button>
+            <div className = 'outer-box'>
+                <div className = 'inner-box'>
+                    <div key='firstname' className='registration-div'>
+                        <label className='registration-label'>First Name:</label>
+                        <input className='registration-input' type='text' id='firstname' placeholder='Enter First Name'/>
+                    </div>
+                    <div key='lastname' className='registration-div'>
+                        <label className='registration-label'>Last Name:</label>
+                        <input className='registration-input' type='text' id='lastname' placeholder='Enter Last Name'/>
+                    </div>
+                    <div key='dob' className='registration-div'>
+                        <label className='registration-label'>Date of Birth:</label>
+                        <input className='registration-input' type='text' id='dateOfBirth' placeholder='Enter Date of Birth'/>
+                    </div>
+                    <div key='email' className='registration-div'>
+                        <label className='registration-label'>Email:</label>
+                        <input className='registration-input' type='text' id='email' placeholder='Enter Email'/>
+                    </div>
+                    <div key='phonenumber' className='registration-div'>
+                        <label className='registration-label'>Phone Number:</label>
+                        <input className='registration-input' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
+                    </div>
+                    <div key='address' className='registration-div'>
+                        <label className='registration-label'>Address</label>
+                        <input className='registration-input' type='text' id='address' placeholder='Enter Address'/>
+                    </div>
+                    <div key='postalcode' className='registration-div'>
+                        <label className='registration-label'>Postal Code:</label>
+                        <input className='registration-input' type='text' id='postalCode' placeholder='Enter Postal Code'/>
+                    </div>
+                    <div key='healthcard' className='registration-div'>
+                        <label className='registration-label'>Health Card Number:</label>
+                        <input className='registration-input' type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
+                    </div>
+                    <div key='submit' className='registration-div'>
+                        <button className='registration-button' id='submit-button' onClick={register}>Submit</button>
+                    </div>
                 </div>
             </div>
-        </div>
     )
 }
 
