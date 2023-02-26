@@ -1,31 +1,76 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios';
+import { doctorRequests } from '../../utils/requests/doctor';
+import { requestConfig } from '../../utils/requests/requestConfig';
 import Subtitle from '../../components/shared/subtitle'
 import DoctorInfo from '../../components/shared/user_info'
 import AddPatient from '../../components/doctor_info/add_remove_patient_panel'
 import AddRecord from '../../components/doctor_info/add_record_panel'
-import { useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
+import toast from 'react-hot-toast';
 
-// Should request response from server using user.username
-// An example respose should be of the format:
-const res = {
-  doctorInfo: [
-    {label: 'First Name:', value: 'John'},
-    {label:'Last Name:', value: 'Smith'},
-    {label:'Staff ID:', value: '1234567890'},
-    {label:'Clinic:', value: 'Waterloo Central'},
-    {label:'Specialization:', value: 'Eye Doctor'},
-    {label:'Email:', value: 'jsmith@gmail.com'},
-    {label:'Phone Number:', value: '517-223-3456'}
-  ]
-}
 
 // Reponse from the server is used to intialize react components
 function Doctorinfo() {
     const user = useOutletContext();
+    const navigate = useNavigate();
+
+    const [doctorInfo, setDoctorInfo] = useState(null)
+    const [error, setError] = useState(false);
+    const [isLoading, setLoading] = useState(false);
+
+    const getDoctorInfo = async() => {
+      setLoading(true)
+      const result  = await doctorRequests(requestConfig).getDoctorInfo(user.username)
+      if(result.statusCode === 200){
+        setDoctorInfo(result.result)
+      }
+      setLoading(false)
+    }
+    useEffect(() => {
+      getDoctorInfo()
+    }, [user])
+
+    if(isLoading || (doctorInfo == null || doctorInfo == undefined)) {
+      return (
+        <h1>Loading...</h1>
+      )
+    }
+
+    if(typeof(doctorInfo) === "object" && Object.keys(doctorInfo).length === 0){
+      // https://emojipedia.org/symbols/
+      toast('Please add your infromation', {
+        id: "Hello",
+        duration: 10000,
+        icon: '📣',
+        style: {
+          width: '1200em',
+          height: '3em',
+          fontSize: '1.2em',
+        }
+      })  
+      navigate("/doctorinfo/update")
+    }
+
+    const doctorMap = (doctorInformation)=> {
+      return [
+          {label: 'First Name:', value: doctorInformation.firstname},
+          {label:'Last Name:', value: doctorInformation.lastname},
+          {label:'Staff ID:', value: doctorInformation.staffID},
+          {label:'Clinic:', value: doctorInformation.clinic},
+          {label:'Specialization:', value: doctorInformation.specialization},
+          {label:'Email:', value: doctorInformation.email},
+          {label:'Phone Number:', value: doctorInformation.phonenumber}
+        ]
+    }
+
+    console.log(doctorInfo)
+
     return (
       <div className="md:px-20 px-10 py-10">
         <Subtitle title='General Info:' />
-        <DoctorInfo doctorInfo={res.doctorInfo}/>
+        <DoctorInfo doctorInfo={doctorMap(doctorInfo)} />
         <Subtitle title='Add Record:' />
         <AddRecord user={user} patientList/>
       </div>
