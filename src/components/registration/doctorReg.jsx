@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { doctorRequests } from '../../utils/requests/doctor';
+import { requestConfig } from '../../utils/requests/requestConfig';
 import './registration.css'
 
 function registerDoctor ({user}) {
@@ -28,9 +30,8 @@ function registerDoctor ({user}) {
             phonenumber: phoneNumber
         }
 
-        await axios.post('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/registerdoctorinfo', doctor)
-            .then((res) => {console.log(res)})
-            .catch((err) => {console.log(err)})
+        const result = await doctorRequests(requestConfig).registerDoctor(doctor)
+        console.log(result)
     }
 
 
