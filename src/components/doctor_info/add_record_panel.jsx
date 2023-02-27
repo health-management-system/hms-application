@@ -2,16 +2,16 @@ import React from 'react'
 import { useState } from 'react'
 import './add_record_panel.css'
 
-function AddRecordPanel ({user = {}, patientList = []}) {
+function AddRecordPanel ({user = {}}) {
 
     const postRecord = () => {
         let record = {
-            patient: document.getElementById('patient-select').value,
+            patient: document.getElementById('patient-input').value,
             subject: document.getElementById('subject-input').value,
             log: document.getElementById('log-input').value
         }
         console.log('Doctor "' + user.username + '" has posted the following record:\n' + JSON.stringify(record))
-        document.getElementById('patient-select').value = "default"
+        document.getElementById('patient-input').value = ""
         document.getElementById('subject-input').value = ""
         document.getElementById('log-input').value = ""
     }
@@ -22,16 +22,7 @@ function AddRecordPanel ({user = {}, patientList = []}) {
                 <form>
                     <div className="add-record-div">
                         <label className='add-record-label' id='patient-label'>Patient</label>
-                        <select className='add-record-select' id='patient-select' defaultValue={'default'}>
-                            <option  disabled label='Choose a patient' value='default' key='0'></option>
-                            {patientList.map((patientList) => {
-                                return (
-                                    <option key={patientList.key} value={patientList.value}>
-                                        {patientList.key}
-                                    </option>
-                                )
-                            })};
-                        </select>
+                        <input type='text' className='add-record-input' id='patient-input' placeholder='Enter a Patients Username' />
                     </div>
                     <div className="add-record-div">
                         <label className='add-record-label' id='subject-label'>Subject</label>
