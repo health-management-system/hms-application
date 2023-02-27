@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import { doctorRequests } from '../../utils/requests/doctor';
 import { requestConfig } from '../../utils/requests/requestConfig';
+import toast from 'react-hot-toast';
 import './registration.css'
 
 function registerDoctor ({user}) {
@@ -32,6 +32,19 @@ function registerDoctor ({user}) {
 
         const result = await doctorRequests(requestConfig).registerDoctor(doctor)
         console.log(result)
+
+        if(result.statusCode == 201) {
+            toast('Info Updated!', {
+                id: "Hello",
+                duration: 5000,
+                icon: '🔔',
+                style: {
+                  width: '1200em',
+                  height: '3em',
+                  fontSize: '1.2em',
+                }
+              })
+        }
     }
 
 
