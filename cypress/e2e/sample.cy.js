@@ -2,12 +2,6 @@
 // username: 'e2e_patient'
 // password: 'passWord1'
 
-// Starting project
-before(() => {
-  cy.log('Starting the react app...')
-  cy.exec('npm run coverage', { timeout: 30000 })
-})
-
 // Sign In before each test
 beforeEach(() => {
   cy.visit('http://localhost:3000/')
