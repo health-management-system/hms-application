@@ -5,7 +5,7 @@
 // Starting project
 before(() => {
   cy.log('Starting the react app...')
-  cy.exec('npm start', { timeout: 10000 })
+  cy.exec('npm run coverage', { timeout: 30000 })
 })
 
 // Sign In before each test
