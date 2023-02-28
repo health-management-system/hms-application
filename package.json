@@ -74,7 +74,8 @@
       "src/**/*cy.tsx",
       "src/**/*cy.ts",
       "src/components/sample/",
-      "src/*.js"
+      "src/*.js",
+      "src/utils/requests/requestConfig.ts"
     ]
   }
 }

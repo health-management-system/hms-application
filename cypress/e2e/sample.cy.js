@@ -29,6 +29,7 @@ describe('Doctor Tests', () => {
     const email = generateRandomString(10)
     const phonenumber = generateRandomString(10)
 
+    // Home page click
     cy.get('div > :nth-child(3)').click()
 
     // Check the URL is updated
