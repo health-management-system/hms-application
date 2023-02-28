@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import axios from 'axios';
 import { doctorRequests } from '../../utils/requests/doctor';
 import { requestConfig } from '../../utils/requests/requestConfig';
 import Subtitle from '../../components/shared/subtitle'
 import DoctorInfo from '../../components/shared/user_info'
-import AddPatient from '../../components/doctor_info/add_remove_patient_panel'
 import AddRecord from '../../components/doctor_info/add_record_panel'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import toast from 'react-hot-toast';
