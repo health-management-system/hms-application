@@ -22,22 +22,7 @@ module.exports = defineConfig({
             // and instrumented using the babel-plugin-istanbul
             // (we will filter the code coverage for non-application files later)
             {
-              test: /\.jsx$/,
-              exclude: /node_modules/,
-              use: {
-                loader: "babel-loader",
-                options: {
-                  presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-                  plugins: [
-                    // we could optionally insert this plugin
-                    // only if the code coverage flag is on
-                    "istanbul",
-                  ],
-                },
-              },
-            },
-            {
-              test: /\.tsx$/,
+              test: [/\.jsx$/, /\.tsx$/],
               exclude: /node_modules/,
               use: {
                 loader: "babel-loader",
