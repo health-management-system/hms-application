@@ -36,6 +36,21 @@ module.exports = defineConfig({
                 },
               },
             },
+            {
+              test: /\.tsx$/,
+              exclude: /node_modules/,
+              use: {
+                loader: "babel-loader",
+                options: {
+                  presets: ["@babel/preset-env", "@babel/preset-react"],
+                  plugins: [
+                    // we could optionally insert this plugin
+                    // only if the code coverage flag is on
+                    "istanbul",
+                  ],
+                },
+              },
+            },
           ],
         },
       },
