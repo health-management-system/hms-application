@@ -49,31 +49,29 @@ function AddRecordPanel ({user = {}}) {
     }
 
     return (
-        <div className='outer-box'>
-            <div className='inner-box'>
+            <div className='inner-box rounded-md'>
                 <form id='post-record-form'>
                     <div className="add-record-div">
-                        <label className='add-record-label' id='patient-label'>Patient</label>
-                        <input type='text' className='add-record-input' id='patient-input' placeholder='Enter a Patients Username' />
+                        <label className='add-record-label' id='patient-label'>Patient:</label>
+                        <input type='text' className='add-record-input rounded-md' id='patient-input' placeholder='Enter a Patients Username' />
                     </div>
                     <div className="add-record-div">
-                        <label className='add-record-label' id='subject-label'>Subject</label>
-                        <input type='text' className='add-record-input' id='subject-input' placeholder='Enter a Subject'></input>
+                        <label className='add-record-label' id='subject-label'>Subject:</label>
+                        <input type='text' className='add-record-input rounded-md' id='subject-input' placeholder='Enter a Subject'></input>
                     </div>
                     <div className="add-record-div">
-                        <label className='add-record-label' id='subject-label'>Date</label>
-                        <input type='text' className='add-record-input' id='date-input' placeholder='Enter a date'></input>
+                        <label className='add-record-label' id='subject-label'>Date:</label>
+                        <input type='text' className='add-record-input rounded-md' id='date-input' placeholder='Enter a date'></input>
                     </div>
                     <div className="add-record-div">
-                        <label className='add-record-label' id='log-label'>Log</label>
-                        <textarea type='text' className='add-record-textarea' id='log-input'></textarea>
+                        <label className='add-record-label' id='log-label'>Log:</label>
+                        <textarea type='text' className='add-record-textarea rounded-md' id='log-input'></textarea>
                     </div>
                 </form>
                 <div className='add-record-button-div' id='button-div'>
-                    <button className='add-record-button' onClick={postRecord}>Post</button>
+                    <button className='add-record-button bg-priCol hover:bg-priHover text-white font-bold py-3 px-8 rounded-md my-6' onClick={postRecord}>Post</button>
                 </div>
             </div>
-        </div>
     )
 
 }

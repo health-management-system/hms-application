@@ -4,10 +4,10 @@
     color: #000000;
     font-weight: 500;
     font-size: 1.2em;
-    margin-right: 1em;
+    margin-right: 20px;
     display: inline-block;
     text-align: right;
-    width: 3em;
+    width: 75px;
     vertical-align: top;
   }
   
@@ -22,19 +22,17 @@
   
   .add-record-input {
     background-color: #FFFFFF ;
-    width: 80%;
-    margin-left: 0.7em;
-    border-radius: 1em;
+    width: 88%;
+    /* border-radius: 1em; */
     padding: 0.2em 0.3em 0.2em 0.3em;
     color: #000000;   
   }
   
   .add-record-textarea {
-    width: 80%;
+    width: 88%;
     height: 10em;
     background-color: #FFFFFF ;
-    margin-left: 0.7em;
-    border-radius: 1em;
+    /* border-radius: 1em; */
     padding: 0.5em 0.5em 0.5em 0.5em;
     color: #000000; 
   }
@@ -50,5 +48,5 @@
   }
   
   .add-record-button-div {
-    margin-left: 90%;
+    margin-left: 95px;
   }

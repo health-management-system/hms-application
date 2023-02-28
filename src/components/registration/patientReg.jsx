@@ -71,12 +71,11 @@ function RegisterPatient ({user}) {
     }
 
     return (
-            <div className = 'outer-box'>
-                <div className = 'inner-box'>
+                <div className = 'inner-box rounded-md'>
                     <form id='patient-update-info-form'>
                         <div key='firstname' className='registration-div'>
                             <label className='registration-label'>First Name:</label>
-                            <input className='registration-input' type='text' id='firstname' placeholder='Enter First Name'/>
+                            <input className='registration-input rounded-md' type='text' id='firstname' placeholder='Enter First Name'/>
                         </div>
                         <div key='lastname' className='registration-div'>
                             <label className='registration-label'>Last Name:</label>
@@ -108,10 +107,9 @@ function RegisterPatient ({user}) {
                         </div>
                     </form>
                     <div key='submit' className='registration-div'>
-                        <button className='registration-button' id='submit-button' onClick={register}>Submit</button>
+                        <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold py-3 px-8 rounded-md my-6' id='submit-button' onClick={register}>Submit</button>
                     </div>
                 </div>
-            </div>
     )
 }
 

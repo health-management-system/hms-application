@@ -3,11 +3,13 @@
 .subtitle-div {
     color: black;
     font-weight: 600;
-    background-color: #BDC3CB;
-    border-radius: 1em;
+    background-color: #EDE7DC;
+    /* border-radius: 1em; */
     font-size: 1.5em;
     padding: 0.3% 0.8% 0.3% 0.8%;
     display: inline-block;
     margin-top: 1.5%;
     margin-bottom: 1.5%;
+    border-width: 7px;
+    border-color: #BDC3CB;
   }

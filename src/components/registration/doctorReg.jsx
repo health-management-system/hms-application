@@ -59,43 +59,43 @@ function RegisterDoctor ({user}) {
     }
 
     return (
-            <div className = 'outer-box'>
-                <div className = 'inner-box'>
-                    <form id='doctor-update-info-form'>
+            // <div className = 'outer-box rounded-md'>
+                <div className = 'inner-box rounded-md'>
+                    <form id='doctor-update-info-form' className='registration-form'>
                         <div key='firstname' className='registration-div'>
                             <label className='registration-label'>First Name:</label>
-                            <input className='registration-input' type='text' id='firstname' placeholder='Enter First Name'/>
+                            <input className='registration-input rounded-md' type='text' id='firstname' placeholder='Enter First Name'/>
                         </div>
                         <div key='lastname' className='registration-div'>
                             <label className='registration-label'>Last Name:</label>
-                            <input className='registration-input' type='text' id='lastname' placeholder='Enter Last Name'/>
+                            <input className='registration-input rounded-md' type='text' id='lastname' placeholder='Enter Last Name'/>
                         </div>
                         <div key='staffid' className='registration-div'>
                             <label className='registration-label'>Staff ID:</label>
-                            <input className='registration-input' type='text' id='staffid' placeholder='Enter Staff ID'/>
+                            <input className='registration-input  rounded-md' type='text' id='staffid' placeholder='Enter Staff ID'/>
                         </div>
                         <div key='clinic' className='registration-div'>
                             <label className='registration-label'>Clinic:</label>
-                            <input className='registration-input' type='text' id='clinic' placeholder='Enter Clinic'/>
+                            <input className='registration-input  rounded-md' type='text' id='clinic' placeholder='Enter Clinic'/>
                         </div>
                         <div key='specialization' className='registration-div'>
                             <label className='registration-label'>Specialization:</label>
-                            <input className='registration-input' type='text' id='specialization' placeholder='Enter Specialization'/>
+                            <input className='registration-input rounded-md' type='text' id='specialization' placeholder='Enter Specialization'/>
                         </div>
                         <div key='email' className='registration-div'>
                             <label className='registration-label'>Email:</label>
-                            <input className='registration-input' type='text' id='email' placeholder='Enter Email'/>
+                            <input className='registration-input rounded-md' type='text' id='email' placeholder='Enter Email'/>
                         </div>
                         <div key='phonenumber' className='registration-div'>
                             <label className='registration-label'>Phone Number:</label>
-                            <input className='registration-input' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
+                            <input className='registration-input rounded-md' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
                         </div>
                     </form>
                     <div key='submit' className='registration-div'>
-                        <button className='registration-button' id='submit-button' onClick={register}>Submit</button>
+                        <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold py-3 px-8 rounded-md my-6' id='submit-button' onClick={register}>Submit</button>
                     </div>
                 </div>
-            </div>
+            // </div>
     )
 }
 

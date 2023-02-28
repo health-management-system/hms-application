@@ -31,6 +31,8 @@ body {
   border-radius: 1em;
   width: 99%;
   padding: 3% 5% 3% 5%;
+  border-width: 7px;
+  border-color: #BDC3CB;
 }
 
 /* Buttons for homepage (purely for testing) */
