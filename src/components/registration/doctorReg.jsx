@@ -1,12 +1,17 @@
 import React from 'react'
-import axios from 'axios'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { doctorRequests } from '../../utils/requests/doctor';
 import { requestConfig } from '../../utils/requests/requestConfig';
+import toast from 'react-hot-toast';
 import './registration.css'
 
-function registerDoctor ({user}) {
+function RegisterDoctor ({user}) {
 
     const username = user.username
+    const navigate = useNavigate()
+    const [isUpdated, setUpdated] = useState(false)
+    
 
     const register = async() => {
         const firstname = document.getElementById('firstname').value
@@ -32,8 +37,26 @@ function registerDoctor ({user}) {
 
         const result = await doctorRequests(requestConfig).registerDoctor(doctor)
         console.log(result)
+
+        if(result.statusCode == 201) {
+            toast('Info Updated!', {
+                id: "Hello",
+                duration: 5000,
+                icon: '🔔',
+                style: {
+                  width: '1200em',
+                  height: '3em',
+                  fontSize: '1.2em',
+                }
+              })
+        }
+        setUpdated(true)
+        console.log(isUpdated)
     }
 
+    if(isUpdated) {
+        navigate('/doctorinfo')
+    }
 
     return (
             <div className = 'outer-box'>
@@ -76,4 +99,4 @@ function registerDoctor ({user}) {
     )
 }
 
-export default registerDoctor
+export default RegisterDoctor
