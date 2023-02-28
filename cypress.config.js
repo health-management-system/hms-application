@@ -27,7 +27,7 @@ module.exports = defineConfig({
               use: {
                 loader: "babel-loader",
                 options: {
-                  presets: ["@babel/preset-env", "@babel/preset-react"],
+                  presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
                   plugins: [
                     // we could optionally insert this plugin
                     // only if the code coverage flag is on
@@ -42,7 +42,7 @@ module.exports = defineConfig({
               use: {
                 loader: "babel-loader",
                 options: {
-                  presets: ["@babel/preset-env", "@babel/preset-react"],
+                  presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
                   plugins: [
                     // we could optionally insert this plugin
                     // only if the code coverage flag is on
