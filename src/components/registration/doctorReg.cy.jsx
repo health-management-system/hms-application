@@ -1,4 +1,5 @@
 import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom';
 import Registration from './doctorReg'
 
 const user = {
@@ -7,10 +8,18 @@ const user = {
 
 describe('Tests for Doctor Registration Component', () => {
     it('Renders the component', () => {
-        cy.mount(<Registration user={user}/>)
+        cy.mount(
+            <Router>
+                <Registration user={user}/>
+            </Router>
+        )
     })
     it('Clears inputs after clicking the submit button', () => {
-        cy.mount(<Registration user={user}/>)
+        cy.mount(
+            <Router>
+                <Registration user={user}/>
+            </Router>
+        )
         // Enter data
         cy.get('#firstname').type('John')
         cy.get('#lastname').type('Doe')
