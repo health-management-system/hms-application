@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         priCol: "#153243",
+        priHover: "#245573",
         secCol: "#ede7dc",
         grayCol: "#BDC3CB",
       },

@@ -13,15 +13,29 @@ function patientRecord(props :{record:recordType}) {
   return (
     <div className='outer-box'>
         <div className='inner-box'>
-        <label>Doctor Name: </label> <span>{props.record.doctorName}</span>
-        <label>Patient Name: </label> <span>{props.record.PatientName}</span>
-        <label>Clinic: </label> <span>{props.record.clinic}</span>
-        <label>Subject: </label> <span>{props.record.subject}</span>
-        <label>Date: </label> <span>{props.record.date}</span>
-        <label>Log: </label>
-        <article>
-    
-        </article>
+          <ul className="view-record-panel">
+            <li className="view-record-list-item">
+              <label className="view-record-label">Doctor Name: </label> <span className="view-record-span">{props.record.doctorName}</span>
+              </li>
+            <li className="view-record-list-item">
+              <label className="view-record-label">Patient Name: </label> <span className="view-record-span">{props.record.PatientName}</span>
+              </li>
+            <li className="view-record-list-item">
+              <label className="view-record-label">Clinic: </label> <span className="view-record-span">{props.record.clinic}</span>
+              </li>
+            <li className="view-record-list-item">
+              <label className="view-record-label">Subject: </label> <span className="view-record-span">{props.record.subject}</span>
+              </li>
+            <li className="view-record-list-item">
+              <label className="view-record-label">Date: </label> <span className="view-record-span">{props.record.date}</span>
+              </li>
+          </ul>
+          <div className="view-record-panel">
+            <label className="view-record-label">Log: </label>
+            <article className="record-log-article">
+              {props.record.log}
+            </article>
+          </div>
         </div>
     </div>
   )

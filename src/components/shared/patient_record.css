@@ -1,0 +1,48 @@
+.record-log-article {
+    display: block;
+    font-size: 1.2em;
+    text-align: left;
+    width: 100%;
+    background-color: whitesmoke;
+    border-color: black;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 1em;
+    margin-top: 0.5em;
+}
+
+.view-record-label {
+    width: 150px;
+    font-weight: 500;
+    font-size: 1.2em;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0.1em 0.6em 0.1em 0.6em;
+}
+
+.view-record-span {
+    color: black;
+    font-size: 1.2em;
+    margin-left: 1em;
+    text-align: right;
+    display: inline-block;
+    white-space: nowrap;
+    /*background-color: whitesmoke;*/
+    padding: 0.1em 0.6em 0.1em 0.6em;
+    border-radius: 1em;
+  }
+
+.view-record-list-item {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    width: 100%;
+    margin: 0.5em 0.5em;
+}
+
+.view-record-panel {
+    border-width: 1px;
+    border-color: black ;
+    margin: 1em 1em;
+    padding: 1em;
+}
