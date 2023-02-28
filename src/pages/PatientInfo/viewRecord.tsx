@@ -34,7 +34,7 @@ function ViewRecord() {
         <div className="md:px-20 px-10 py-10">
             <Subtitle title='Record:' />
             <PatientRecord record={mockRecord} />
-            <button className="bg-priCol hover:bg-priHover text-white font-bold py-3 px-8 rounded-full my-6" onClick={patientInfo}>Back</button>
+            <button className="bg-priCol hover:bg-priHover text-white font-bold py-3 px-8 rounded-md my-6" onClick={patientInfo}>Back</button>
         </div>
     )
 

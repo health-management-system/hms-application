@@ -3,11 +3,11 @@
     font-size: 1.2em;
     text-align: left;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: #fbfaf8;
     border-color: black;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    border-radius: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
     margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .view-record-label {
@@ -37,12 +37,14 @@
     flex-direction: row;
     justify-items: space-between;
     width: 100%;
-    margin: 0.5em 0.5em;
+    margin: 0.5em 0em 0.5em 0em; 
+    background-color: #fbfaf8;
+    padding: .2em .2em;
 }
 
-.view-record-panel {
+/* .view-record-panel {
     border-width: 1px;
     border-color: black ;
     margin: 1em 1em;
     padding: 1em;
-}
+} */
