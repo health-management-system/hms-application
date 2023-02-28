@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^4.3.6",
+    "@cypress/instrument-cra": "^1.4.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -27,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts -r @cypress/instrument-cra start"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +51,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.21.0",
     "@bahmutov/cypress-code-coverage": "^1.3.2",
+    "@cypress/code-coverage": "^3.10.0",
     "babel-plugin-istanbul": "^6.1.1",
     "cypress": "^12.5.1",
     "eslint-plugin-cypress": "^2.12.1",
@@ -58,12 +62,20 @@
   "nyc": {
     "all": true,
     "excludeAfterRemap": true,
-    "include": "src/**/*.jsx",
+    "include": [
+      "src/**/*.jsx",
+      "src/**/*.js",
+      "src/**/*.tsx",
+      "src/**/*.ts"
+    ],
     "exclude": [
-      "cypress/**/*.js",
-      "src/**/*.cy.jsx",
-      "src/**/*.test.js",
-      "src/setupTests.js"
+      "src/**/*cy.jsx",
+      "src/**/*cy.js",
+      "src/**/*cy.tsx",
+      "src/**/*cy.ts",
+      "src/components/sample/",
+      "src/*.js",
+      "src/utils/requests/requestConfig.ts"
     ]
   }
 }
