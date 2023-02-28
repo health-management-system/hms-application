@@ -7,15 +7,15 @@ describe("Tests for the Add Record Panel", () => {
     });
     it("Shows Correct text on patient Label", () => {
         cy.mount(<AddRecordPanel />);
-        cy.get("#patient-label").should("have.text", "Patient");
+        cy.get("#patient-label").should("have.text", "Patient:");
     });
     it("Shows Correct text on subject Label", () => {
         cy.mount(<AddRecordPanel />);
-        cy.get("#subject-label").should("have.text", "Subject");
+        cy.get("#subject-label").should("have.text", "Subject:");
     });
     it("Shows Correct text on log Label", () => {
         cy.mount(<AddRecordPanel />);
-        cy.get("#log-label").should("have.text", "Log");
+        cy.get("#log-label").should("have.text", "Log:");
     });
     it("Shows blank subject field", () => {
         cy.mount(<AddRecordPanel />);
