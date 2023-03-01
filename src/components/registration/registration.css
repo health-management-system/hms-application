@@ -10,6 +10,7 @@
     width: 200px;
     display: inline-block;
     text-align: right;
+    font-weight: 700;
   }
   
   .registration-input {
