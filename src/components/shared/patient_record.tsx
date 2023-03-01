@@ -28,13 +28,16 @@ function patientRecord(props :{record:recordType}) {
               </li>
             <li className="view-record-list-item rounded-md">
               <label className="view-record-label">Date: </label> <span className="view-record-span">{props.record.date}</span>
-              </li>
+            </li>
+            <li className="view-record-log-li rounded-md">
+              <div className="view-record-log-label">Log:</div>
+              <article className="record-log-article rounded-md">
+                {props.record.log}
+              </article>
+            </li>
           </ul>
           <div className="view-record-panel rounded-md">
-            {/* <label className="view-record-label">Log: </label> */}
-            <article className="record-log-article rounded-md">
-              {props.record.log}
-            </article>
+            
           </div>
         </div>
     </div>
