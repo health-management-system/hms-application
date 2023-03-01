@@ -7,7 +7,7 @@ import PatientProfile from "./PatientInfo/Profile";
 import PatientRegistration from "./PatientInfo/Registration";
 import DoctorProfile from "./DoctorInfo/Profile";
 import DoctorRegistration from "./DoctorInfo/Registration"
-import ViewRecord from './PatientInfo/ViewRecord.tsx';
+import ViewRecord from './PatientInfo/viewRecord.tsx';
 
 
 const router = createBrowserRouter([
