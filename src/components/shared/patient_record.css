@@ -54,6 +54,8 @@
 
 .view-record-log-li{
     text-align: left;
+    display: flex;
+    flex-direction: column;
     justify-items: space-between;
     width: 100%;
     margin: 0.5em 0em 0.5em 0em; 
@@ -62,9 +64,32 @@
     padding: .2em .2em;
 }
 
-/* .view-record-panel {
-    border-width: 1px;
-    border-color: black ;
-    margin: 1em 1em;
-    padding: 1em;
-} */
+@media screen and (max-width: 500px) {
+    .view-record-list-item {
+      flex-direction: column;
+    }
+    .view-record-label {
+      width: 100%;
+      text-align: left;
+    }
+    .view-record-span {
+        width: 100%;
+        text-align: left;
+        margin-left: 0px;
+    }
+    .view-record-log-label {
+        width: 100%;
+        text-align: left;
+      }
+      .record-log-article {
+          width: 100%;
+          text-align: left;
+          margin-left: 0px;
+      }
+    .registration-input {
+      width: 100%;
+    }
+    .registration-button {
+      margin-left: 0%;
+    }
+  }

@@ -8,6 +8,7 @@
     display: inline-block;
     padding: 0.1em 0.6em 0.1em 0.6em;
     margin-right: 70px;
+    overflow-wrap: break-word;
   }
   
   .user-info-span {
@@ -17,6 +18,7 @@
     display: inline-block;
     white-space: nowrap;
     padding: 0.1em 0.6em 0.1em 0.6em;
+    overflow-wrap: break-word;
   }
   
   .user-info-list {
@@ -32,5 +34,14 @@
     margin: 0.5em 0em 0.5em 0em; 
     background-color: #e1dacb;
     padding: .2em .2em;
+  }
+
+  @media screen and (max-width: 500px) {
+    .user-info-list-item {
+      flex-direction: column;
+    }
+    .user-info-span {
+      text-align: left;
+    }
   }
   
