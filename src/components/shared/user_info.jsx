@@ -3,8 +3,7 @@ import './user_info.css'
 
 export default function doctorInfo({ doctorInfo = [] }) {
   return (
-    <div className='outer-box'>
-        <div className='inner-box'>
+        <div className='inner-box rounded-md'>
           <ul className='user-info-list'>
             {doctorInfo.map((doctorInfo) => {
               return (
@@ -13,6 +12,5 @@ export default function doctorInfo({ doctorInfo = [] }) {
             })}
           </ul>
         </div>
-    </div>
   )
 }

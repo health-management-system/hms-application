@@ -71,47 +71,43 @@ function RegisterPatient ({user}) {
     }
 
     return (
-            <div className = 'outer-box'>
-                <div className = 'inner-box'>
-                    <form id='patient-update-info-form'>
-                        <div key='firstname' className='registration-div'>
-                            <label className='registration-label'>First Name:</label>
-                            <input className='registration-input' type='text' id='firstname' placeholder='Enter First Name'/>
-                        </div>
-                        <div key='lastname' className='registration-div'>
-                            <label className='registration-label'>Last Name:</label>
-                            <input className='registration-input' type='text' id='lastname' placeholder='Enter Last Name'/>
-                        </div>
-                        <div key='dob' className='registration-div'>
-                            <label className='registration-label'>Date of Birth:</label>
-                            <input className='registration-input' type='text' id='dateOfBirth' placeholder='Enter Date of Birth'/>
-                        </div>
-                        <div key='email' className='registration-div'>
-                            <label className='registration-label'>Email:</label>
-                            <input className='registration-input' type='text' id='email' placeholder='Enter Email'/>
-                        </div>
-                        <div key='phonenumber' className='registration-div'>
-                            <label className='registration-label'>Phone Number:</label>
-                            <input className='registration-input' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
-                        </div>
-                        <div key='address' className='registration-div'>
-                            <label className='registration-label'>Address</label>
-                            <input className='registration-input' type='text' id='address' placeholder='Enter Address'/>
-                        </div>
-                        <div key='postalcode' className='registration-div'>
-                            <label className='registration-label'>Postal Code:</label>
-                            <input className='registration-input' type='text' id='postalCode' placeholder='Enter Postal Code'/>
-                        </div>
-                        <div key='healthcard' className='registration-div'>
-                            <label className='registration-label'>Health Card Number:</label>
-                            <input className='registration-input' type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
-                        </div>
-                    </form>
-                    <div key='submit' className='registration-div'>
-                        <button className='registration-button' id='submit-button' onClick={register}>Submit</button>
-                    </div>
+        <div className = 'inner-box rounded-md'>
+            <form id='patient-update-info-form'>
+                <div key='firstname' className='registration-div'>
+                    <label className='registration-label'>First Name:</label>
+                    <input className='registration-input rounded-md' type='text' id='firstname' placeholder='Enter First Name'/>
                 </div>
-            </div>
+                <div key='lastname' className='registration-div'>
+                    <label className='registration-label'>Last Name:</label>
+                    <input className='registration-input rounded-md' type='text' id='lastname' placeholder='Enter Last Name'/>
+                </div>
+                <div key='dob' className='registration-div'>
+                    <label className='registration-label'>Date of Birth:</label>
+                    <input className='registration-input rounded-md' type='text' id='dateOfBirth' placeholder='Enter Date of Birth'/>
+                </div>
+                <div key='email' className='registration-div'>
+                    <label className='registration-label'>Email:</label>
+                    <input className='registration-input rounded-md' type='text' id='email' placeholder='Enter Email'/>
+                </div>
+                <div key='phonenumber' className='registration-div'>
+                    <label className='registration-label'>Phone Number:</label>
+                    <input className='registration-input rounded-md' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
+                </div>
+                <div key='address' className='registration-div'>
+                    <label className='registration-label'>Address</label>
+                    <input className='registration-input rounded-md' type='text' id='address' placeholder='Enter Address'/>
+                </div>
+                <div key='postalcode' className='registration-div'>
+                    <label className='registration-label'>Postal Code:</label>
+                    <input className='registration-input rounded-md' type='text' id='postalCode' placeholder='Enter Postal Code'/>
+                </div>
+                <div key='healthcard' className='registration-div'>
+                    <label className='registration-label'>Health Card Number:</label>
+                    <input className='registration-input rounded-md' type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
+                </div>
+            </form>
+            <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' id='submit-button' onClick={register}>Submit</button>
+        </div>
     )
 }
 
