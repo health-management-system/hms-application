@@ -11,7 +11,6 @@ export type recordType={
 
 function patientRecord(props :{record:recordType}) {
   return (
-    <div className='outer-box rounded-md'>
         <div className='inner-box rounded-md'>
           <ul className="view-record-panel rounded-md">
             <li className="view-record-list-item rounded-md">
@@ -37,7 +36,6 @@ function patientRecord(props :{record:recordType}) {
             </article>
           </div>
         </div>
-    </div>
   )
 }
 
