@@ -28,6 +28,7 @@ The component tests are files ending in `*.cy.jsx` and are contained in the same
 7. Configure as Javascript and React
 
 
+
 ## Available Scripts
 
 In the project directory, you can run:
