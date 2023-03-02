@@ -29,7 +29,7 @@ describe("Test for Navbar", () => {
         cy.get('[data-cy="Navbar-sidebar-off"]');
     });
 
-    it("Shows sidebar if menu bar is clicked", () => {
+    it("Shows sidebar if menu bar is clicked and closes afterwards", () => {
         cy.mount(
             <MemoryRouter>
                 <NavBar />
@@ -37,12 +37,17 @@ describe("Test for Navbar", () => {
         );
         cy.get('[data-cy="Navbar-container"]').as("NavbarContainer");
 
+        // Open Navbar
         cy.get("@NavbarContainer").find('[data-cy="Navbar-menu"]').click();
         cy.get("@NavbarContainer")
             .find('[data-cy="Navbar-menu"]')
             .find('[data-cy="Navbar-menu-close"]');
         cy.get('[data-cy="Navbar-background-on"]');
         cy.get('[data-cy="Navbar-sidebar-on"]');
+
+        // Closes Navbar by clicking off it
+        cy.get('[data-cy="Navbar-background-on"]').click();
+        cy.get('[data-cy="Navbar-sidebar-on"]').should('not.exist')
     });
 
     it("Shows patient side bar when address is /patieninfo", () => {
@@ -57,6 +62,7 @@ describe("Test for Navbar", () => {
         cy.get('[data-cy="Navbar-sidebar-on"]').find(
             '[data-cy="Navbar-sidebar-patient"]'
         );
+        cy.get(':nth-child(1) > h3').click()
     });
 
     it("Shows doctor side bar when address is /doctorinfo", () => {
@@ -71,5 +77,6 @@ describe("Test for Navbar", () => {
         cy.get('[data-cy="Navbar-sidebar-on"]').find(
             '[data-cy="Navbar-sidebar-doctor"]'
         );
+        cy.get(':nth-child(1) > h3').click()
     });
 });

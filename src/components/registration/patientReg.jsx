@@ -50,17 +50,6 @@ function RegisterPatient ({user}) {
                   fontSize: '1.2em',
                 }
               })
-        } else {
-            toast('Something went wrong...' , {
-                id: "Hello",
-                duration: 5000,
-                icon: '❌',
-                style: {
-                  width: '1200em',
-                  height: '3em',
-                  fontSize: '1.2em',
-                }
-            })
         }
         setUpdated(true)
         console.log(isUpdated)
