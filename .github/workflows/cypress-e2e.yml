@@ -40,6 +40,19 @@ jobs:
         with:
           start: npm start
           browser: chrome
-          
+      
+      - name: undeploy test environment
+        uses: ambientlight/amplify-cli-action@0.3.0
+        # run even if previous step fails
+        if: failure() || success()
+        with:
+          amplify_command: delete_env
+          amplify_env: ${{ steps.setenvname.outputs.amplifyenvname }}
+          amplify_cli_version: '3.17.1-alpha.35'
+          delete_lock: false
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          AWS_REGION: us-east-1
         
         
