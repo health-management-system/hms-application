@@ -12,7 +12,7 @@
 
 .view-record-label {
     width: 150px;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1.2em;
     white-space: nowrap;
     display: inline-block;
@@ -41,11 +41,13 @@
     /* background-color: #fbfaf8; */
     background-color: #e1dacb;
     padding: .2em .2em;
+    border-width: 2px;
+    border-color: #010409;
 }
 
 .view-record-log-label {
     width: 100%;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1.2em;
     white-space: nowrap;
     display: inline-block;
@@ -62,6 +64,8 @@
     /* background-color: #fbfaf8; */
     background-color: #e1dacb;
     padding: .2em .2em;
+    border-width: 2px;
+    border-color: #010409;
 }
 
 @media screen and (max-width: 500px) {

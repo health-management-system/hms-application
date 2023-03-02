@@ -2,7 +2,7 @@
 
 .add-record-label {
     color: #000000;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.2em;
     display: inline-block;
     text-align: right;
@@ -26,6 +26,8 @@
     width: 50%;
     padding: 0.2em 0.3em 0.2em 0.3em;
     color: #000000;   
+    border-width: 2px;
+    border-color: #010409;
   }
   
   .add-record-textarea {
@@ -33,7 +35,9 @@
     height: 10em;
     background-color: #FFFFFF ;
     padding: 0.5em 0.5em 0.5em 0.5em;
-    color: #000000; 
+    color: #000000;
+    border-width: 2px;
+    border-color: #010409; 
   }
   
   .add-record-div {
@@ -62,5 +66,11 @@
     }
     .add-record-button {
       margin-left: 0px;
+    }
+    .add-record-input {
+      width: 100%;
+    }
+    .add-record-textarea {
+      width: 100%;
     }
   }

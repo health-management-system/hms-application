@@ -10,6 +10,8 @@ module.exports = {
         priHover: "#245573",
         secCol: "#ede7dc",
         grayCol: "#BDC3CB",
+        baseCol: '#DDE1E4',
+        accCol: '#010409'
       },
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],

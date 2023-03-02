@@ -23,8 +23,9 @@ body {
   display: inline-block;
   width: 99%;
   padding: 3% 5% 3% 5%;
-  border-width: 10px;
-  border-color: #BDC3CB;
+  border-width: 2px;
+  /* border-color: #BDC3CB; */
+  border-color: #010409;
 }
 
 /* Buttons for homepage (purely for testing) */
