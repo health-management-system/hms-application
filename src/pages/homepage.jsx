@@ -31,7 +31,7 @@ function Homepage({ signOut, user}) {
         <div className="background-image">
         <div className="content">
         <b><h1>Welcome {user.username}</h1></b>
-        <p>Select your Role to be rediredted</p>
+        <p>Select your Role to be redirected</p>
         <div>
         <button className='test-button' onClick={signOut} >Sign out</button>
         <button className='test-button' onClick={doctorInfo} >Doctor Info Page</button>
