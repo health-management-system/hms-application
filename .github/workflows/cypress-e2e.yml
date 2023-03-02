@@ -31,8 +31,10 @@ jobs:
           amplify_env: dev
           amplify_cli_version: '3.17.1-alpha.35'
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          #AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
+          #AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          AWS_ACCESS_KEY_ID: AKIARK2DE7GKZF7YM7N4
+          AWS_SECRET_ACCESS_KEY: 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
           AWS_REGION: us-east-1
         
       - name: Cypress E2E
@@ -51,8 +53,10 @@ jobs:
           amplify_cli_version: '3.17.1-alpha.35'
           delete_lock: false
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          #AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
+          #AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          AWS_ACCESS_KEY_ID: AKIARK2DE7GKZF7YM7N4
+          AWS_SECRET_ACCESS_KEY: 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
           AWS_REGION: us-east-1
         
         
