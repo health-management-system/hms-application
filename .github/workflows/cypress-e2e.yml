@@ -11,15 +11,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       
-      - name: Setup-Amplify
-        id: setenvname
-        run: echo "##[set-output name=amplifyenvname;]$(echo ${GITHUB_HEAD_REF//[-_]/} | cut -c-10)"
+      #- name: Setup-Amplify
+      #  id: setenvname
+      #  run: echo "##[set-output name=amplifyenvname;]$(echo ${GITHUB_HEAD_REF//[-_]/} | cut -c-10)"
         
       - name: deploy test environment
         uses: ambientlight/amplify-cli-action@0.3.0
         with:
           amplify_command: add_env
-          amplify_env: ${{ steps.setenvname.outputs.amplifyenvname }}
+          amplify_env: dev
           amplify_cli_version: '3.17.1-alpha.35'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
