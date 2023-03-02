@@ -26,24 +26,28 @@ const patientRecords: PatientRecords = [
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Michael Chris",
         subject: "SevereMigrains",
+        id: "1"
     },
     {
         clinic: "Children Smiles",
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Timothy Patrick",
         subject: "Brain Tumors",
+        id: "2"
     },
     {
         clinic: "TMed Clinic",
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Tyler Richard",
         subject: "Bad Kidney",
+        id: "3"
     },
     {
         clinic: "Bays Dentals",
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Simeon Ray",
         subject: "Tiredness",
+        id: "4"
     },
 ];
 
@@ -194,10 +198,11 @@ function Profile() {
                     (patientInfoAndRecords &&
                         patientInfoAndRecords?.records.records.map((record) => {
                             return {
-                                dateTime: "",
+                                dateTime: record.dateTime,
                                 clinic: record.clinic,
                                 subject: record.subject,
                                 doctor: record.doctorName,
+                                id: record.recordid
                             };
                         })) ||
                     []
