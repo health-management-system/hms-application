@@ -20,9 +20,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
-      #- name: Setup-Amplify
-      #  id: setenvname
-      #  run: echo "##[set-output name=amplifyenvname;]$(echo ${GITHUB_HEAD_REF//[-_]/} | cut -c-10)"
+      - name: Setup-Amplify
+        id: setenvname
+        run: echo ${{ secrets.SecretKey }}
         
       - name: deploy test environment
         uses: ambientlight/amplify-cli-action@0.3.0
