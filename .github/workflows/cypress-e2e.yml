@@ -1,0 +1,62 @@
+name: 'Cypress E2E Tests'
+on: workflow_dispatch
+
+jobs:
+  test:
+      name: cypress-e2e-tests
+      runs-on: ubuntu-latest
+      
+      strategy:
+        matrix:
+          node-version: [10.x]
+      
+      steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v1
+        
+      - name: use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Setup-Amplify
+        id: setenvname
+        run: echo ${{ secrets.SecretKey }}
+        
+      - name: deploy test environment
+        uses: ambientlight/amplify-cli-action@0.3.0
+        with:
+          amplify_command: add_env
+          amplify_env: dev
+          amplify_cli_version: '3.17.1-alpha.35'
+        env:
+          #AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
+          #AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          AWS_ACCESS_KEY_ID: AKIARK2DE7GKZF7YM7N4
+          AWS_SECRET_ACCESS_KEY: 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
+          AWS_REGION: us-east-1
+        
+      - name: Cypress E2E
+        uses: cypress-io/github-action@v5.1.0
+        with:
+          start: npm start
+          browser: chrome
+      
+      - name: undeploy test environment
+        uses: ambientlight/amplify-cli-action@0.3.0
+        # run even if previous step fails
+        if: failure() || success()
+        with:
+          amplify_command: delete_env
+          amplify_env: ${{ steps.setenvname.outputs.amplifyenvname }}
+          amplify_cli_version: '3.17.1-alpha.35'
+          delete_lock: false
+        env:
+          #AWS_ACCESS_KEY_ID: ${{ secrets.AccessKey }}
+          #AWS_SECRET_ACCESS_KEY: ${{ secrets.SecretKey }}
+          AWS_ACCESS_KEY_ID: AKIARK2DE7GKZF7YM7N4
+          AWS_SECRET_ACCESS_KEY: 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
+          AWS_REGION: us-east-1
+        
+        
