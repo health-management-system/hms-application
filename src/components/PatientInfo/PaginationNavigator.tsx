@@ -4,6 +4,7 @@ type PaginationNavigatorProps = {
     onLeftClick?: (...event: any) => void;
     onRightClick?: (...event: any) => void;
     currentIndex?: number;
+    lastPage?: number
 };
 function PaginationNavigator(props: PaginationNavigatorProps) {
     return (
@@ -16,7 +17,7 @@ function PaginationNavigator(props: PaginationNavigatorProps) {
                 <span className="underline">
                     {props.currentIndex?.toLocaleString()}
                 </span>{" "}
-                of 10
+                of <span>{props.lastPage?.toLocaleString()}</span>
             </p>
             <FaAngleRight
                 className="hover:scale-110 cursor-pointer"

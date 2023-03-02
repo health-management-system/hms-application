@@ -4,11 +4,12 @@
     color: #000000;
     font-weight: 500;
     font-size: 1.2em;
-    margin-right: 1em;
     display: inline-block;
     text-align: right;
-    width: 3em;
+    width: 150px;
+    margin-right: 15px;
     vertical-align: top;
+    overflow-wrap: break-word;
   }
   
   .add-record-select {
@@ -22,9 +23,7 @@
   
   .add-record-input {
     background-color: #FFFFFF ;
-    width: 80%;
-    margin-left: 0.7em;
-    border-radius: 1em;
+    width: 50%;
     padding: 0.2em 0.3em 0.2em 0.3em;
     color: #000000;   
   }
@@ -33,22 +32,35 @@
     width: 80%;
     height: 10em;
     background-color: #FFFFFF ;
-    margin-left: 0.7em;
-    border-radius: 1em;
     padding: 0.5em 0.5em 0.5em 0.5em;
     color: #000000; 
   }
   
   .add-record-div {
     margin: 1em 0em 1em 0em;
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
   }
   
   .add-record-button {
     color: #FFFFFF;
     background-color: #153243;
     padding: 0.3em 1.3em 0.3em 1.3em;
+    width: 100px;
+    height: 40px;
+    margin-left: 165px;
+    overflow-wrap: break-word;
   }
-  
-  .add-record-button-div {
-    margin-left: 90%;
+
+  @media screen and (max-width: 500px) {
+    .add-record-div {
+      flex-direction: column;
+    }
+    .add-record-label{
+      text-align: left;
+    }
+    .add-record-button {
+      margin-left: 0px;
+    }
   }

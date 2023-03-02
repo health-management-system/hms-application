@@ -18,19 +18,13 @@ body {
 
 /* General DOM Elements*/
 
-.outer-box {
-  background-color: #BDC3CB;
-  padding: 1% 1% 1% 1%;
-  border-radius: 1em;
-  width: 100%;
-}
-
 .inner-box {
   background-color: #EDE7DC;
   display: inline-block;
-  border-radius: 1em;
   width: 99%;
   padding: 3% 5% 3% 5%;
+  border-width: 10px;
+  border-color: #BDC3CB;
 }
 
 /* Buttons for homepage (purely for testing) */

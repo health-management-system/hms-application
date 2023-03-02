@@ -11,6 +11,13 @@ Documentation: [Guide Found Here](https://glebbahmutov.com/blog/component-code-c
 ## Cypress Component Testing
 The component tests are files ending in `*.cy.jsx` and are contained in the same directory as the react component (`.jsx`) they test. A sample of the testing can be seen in `./src/components/sample/` where `sample.jsx` is tested by `sample.cy.jsx`.
 
+## Cypress E2E:
+- Run the instrumented code using `npm run coverage`
+- After running the cypress tests on the program see the line coverage in `./coverage/lcov-report/index.html` 
+- Documentation:
+    - https://www.npmjs.com/package/@cypress/instrument-cra
+    - https://docs.cypress.io/guides/tooling/code-coverage 
+
 #### Steps to run tests:
 1. In the terminal run `npx cypress open`.
 2. A Cypress window should open showing, select the component testing option (this should be configured)

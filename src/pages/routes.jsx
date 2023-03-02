@@ -7,6 +7,7 @@ import PatientProfile from "./PatientInfo/Profile";
 import PatientRegistration from "./PatientInfo/Registration";
 import DoctorProfile from "./DoctorInfo/Profile";
 import DoctorRegistration from "./DoctorInfo/Registration"
+import ViewRecord from './PatientInfo/viewRecord.tsx';
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,9 @@ const router = createBrowserRouter([
         }, {
             path: "update/",
             element: <PatientRegistration />
+        }, {
+            path: "viewrecord/",
+            element: <ViewRecord />
         }]
     },
     {
