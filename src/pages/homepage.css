@@ -27,7 +27,7 @@
         font-size: 16px;
       }
 
-    button{
+    .home-button{
         width:200px;
         padding: 15px 0;
         text-align: center;
@@ -36,5 +36,5 @@
         font-weight:bold;
         color:#fff;
         cursor: pointer;
-
+        background-color: #153243;
     }

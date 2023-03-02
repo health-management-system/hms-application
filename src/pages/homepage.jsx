@@ -33,15 +33,12 @@ function Homepage({ signOut, user}) {
         <b><h1>Welcome {user.username}</h1></b>
         <p>Select your Role to be redirected</p>
         <div>
-        <button className='test-button' onClick={signOut} >Sign out</button>
-        <button className='test-button' onClick={doctorInfo} >Doctor Info Page</button>
-        <button className='test-button' onClick={patientInfo}>Patient Info Page</button>
+        <button className='home-button hover:bg-priHover' onClick={signOut} >Sign out</button>
+        <button className='home-button hover:bg-priHover' onClick={doctorInfo} >Doctor Info Page</button>
+        <button className='home-button hover:bg-priHover' onClick={patientInfo}>Patient Info Page</button>
         </div>
         </div>
         </div>
-  
-   
-
   );
 }
 
