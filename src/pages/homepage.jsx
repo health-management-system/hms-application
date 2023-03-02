@@ -28,10 +28,8 @@ function Homepage({ signOut, user}) {
 
   return (
 
-        <div class="background-image">
-
-        <div class="content">
-
+        <div className="background-image">
+        <div className="content">
         <b><h1>Welcome {user.username}</h1></b>
         <p>Select your Role to be rediredted</p>
         <div>
