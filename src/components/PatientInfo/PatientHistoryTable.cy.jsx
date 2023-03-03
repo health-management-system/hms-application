@@ -2,7 +2,7 @@
 import React from "react";
 import { PatientHistoryTable } from "./PatientHistoryTable";
 import "../../../node_modules/tailwindcss/tailwind.css";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, useLoaderData, useLocation } from "react-router-dom";
 
 describe("Test for the PatientHistoryTable", () => {
     it("Renders", () => {
@@ -65,27 +65,31 @@ describe("Test for the PatientHistoryTable", () => {
         cy.get("@onRefresh").should("have.been.called", 1);
     });
 
-    it("Shows an all patient records when there is no error", () => {
+    it("Shows an all patient records when there is no error and each record can be clicked", () => {
         let dummydata = [
             {
+                id: "1",
                 clinic: "Hope Medicals",
                 dateTime: "12:00 pm 01/30/2023",
                 doctor: "Dr. Michael Chris",
                 subject: "SevereMigrains",
             },
             {
+                id: "2",
                 clinic: "Children Smiles",
                 dateTime: "12:00 pm 01/30/2023",
                 doctor: "Dr. Timothy Patrick",
                 subject: "Brain Tumors",
             },
             {
+                id: "3",
                 clinic: "TMed Clinic",
                 dateTime: "12:00 pm 01/30/2023",
                 doctor: "Dr. Tyler Richard",
                 subject: "Bad Kidney",
             },
             {
+                id: "4",
                 clinic: "Bays Dentals",
                 dateTime: "12:00 pm 01/30/2023",
                 doctor: "Dr. Simeon Ray",
@@ -104,5 +108,8 @@ describe("Test for the PatientHistoryTable", () => {
             "have.length",
             4
         );
+        dummydata.forEach((value, index) => {
+            cy.get(`[id="id${value.id}"]`).click();
+        });
     });
 });

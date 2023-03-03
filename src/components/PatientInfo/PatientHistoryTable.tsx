@@ -71,7 +71,8 @@ export const PatientHistoryTable = (props: PatientHistoryTableProps) => {
                     // all record field
                     props.history?.map((record, index) => (
                         <div
-                            data-cy="PatientHistoryTable-record-field"
+                            data-cy={"PatientHistoryTable-record-field"}
+                            id={`id${record.id}`}
                             className={`px-5 text-center py-5 grid grid-cols-4 gap-x-3 cursor-pointer hover:bg-white group ${
                                 props.history !== undefined &&
                                 index !== props.history.length - 1
