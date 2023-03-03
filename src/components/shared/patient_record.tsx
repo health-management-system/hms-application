@@ -12,7 +12,7 @@ function patientRecord(props: { record: RecordType }) {
                             Doctor Name:{" "}
                         </label>{" "}
                         <span className="view-record-span">
-                            {props.record.doctorUsername}
+                            {props.record.doctorName}
                         </span>
                     </li>
                     <li className="view-record-list-item rounded-md">

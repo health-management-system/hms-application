@@ -32,6 +32,7 @@ export const generalRequests = (config: RequestConfig) => {
 export const EmptyRecord: RecordType = {
     subject: "",
     doctorUsername: "",
+    doctorName: "",
     date: "",
     log: "",
     clinic: "",
@@ -40,6 +41,7 @@ export const EmptyRecord: RecordType = {
 export type RecordType = {
     subject: string;
     doctorUsername: string;
+    doctorName: string;
     date: string;
     log: string;
     clinic: string;
