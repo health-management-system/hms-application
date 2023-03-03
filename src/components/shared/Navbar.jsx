@@ -56,7 +56,7 @@ function NavBar({ role, signOut }) {
                         ? "block"
                         : "hidden"
                 } w-full h-[92vh] bg-black opacity-40 absolute`}
-                onClick={() => setActive(false)}
+                onClick={closeNavBar}
             ></div>
             <div
             data-cy={active?"Navbar-sidebar-on" : "Navbar-sidebar-off"}

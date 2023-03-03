@@ -1,25 +1,15 @@
 import React, { useState } from "react";
 import "./patient_record.css";
-export type recordType={
-    subject:string;
-    doctorName:string;
-    PatientName:string;
-    date:string;
-    log:string;
-    clinic:string;
-}
+import { RecordType } from '../../utils/requests/general'
 
-function patientRecord(props :{record:recordType}) {
+function patientRecord(props :{record:RecordType}) {
   return (
     <div className='outer-box rounded-md'>
         <div className='inner-box rounded-md'>
           <ul className="view-record-panel rounded-md">
             <li className="view-record-list-item rounded-md">
               <label className="view-record-label">Doctor Name: </label> <span className="view-record-span">{props.record.doctorName}</span>
-              </li>
-            <li className="view-record-list-item rounded-md">
-              <label className="view-record-label">Patient Name: </label> <span className="view-record-span">{props.record.PatientName}</span>
-              </li>
+            </li>
             <li className="view-record-list-item rounded-md">
               <label className="view-record-label">Clinic: </label> <span className="view-record-span">{props.record.clinic}</span>
               </li>

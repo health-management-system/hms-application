@@ -9,6 +9,9 @@ describe("AddRemovePatientPanel component for adding and removing patients", () 
     it("Renders", () => {
         cy.mount(<AddRemovePatientPanel user={user} />);
     });
+    it("Renders with empty info", () => {
+        cy.mount(<AddRemovePatientPanel />);
+    });
     it("Text input field should begin empty", () => {
         cy.mount(<AddRemovePatientPanel user={user} />);
         cy.get("input").should("have.text", "");

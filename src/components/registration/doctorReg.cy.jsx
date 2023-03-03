@@ -28,8 +28,12 @@ describe('Tests for Doctor Registration Component', () => {
         cy.get('#specialization').type('Eye Doctor')
         cy.get('#email').type('johnd@gmail.com')
         cy.get('#phoneNumber').type('516-353-3454')
+
         // Submit data
+        cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/registerdoctorinfo').as('req')
         cy.get('#submit-button').click()
+        cy.wait('@req', {responseTimeout: 10000, requestTimeout:10000}).its('response.statusCode').should('eq', 201)
+        
         // Check fields are cleared
         cy.get('#firstname').should("have.text", "")
         cy.get('#lastname').should("have.text", "")

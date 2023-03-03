@@ -25,7 +25,7 @@ describe("Tests for the Add Record Panel", () => {
         cy.mount(<AddRecordPanel />);
         cy.get("#log-input").should("have.text", "");
     });
-    it("Allows information to be entered and posted (should clear fields afterwards)", () => {
+    it("Allows record to be posted with success (should clear fields afterwards)", () => {
         cy.mount(
             <AddRecordPanel patientList={{username: "test user"}} />
         );
@@ -34,7 +34,26 @@ describe("Tests for the Add Record Panel", () => {
         cy.get("#log-input").type(
             "Test description to explain the medical record"
         );
+
+        // Wait for response from the server and check statusCode
+        cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/registerrecord').as('req')
         cy.get("button").click();
+        cy.wait('@req', {responseTimeout: 10000, requestTimeout:10000}).its('response.statusCode').should('eq', 201)
+
+        cy.get("#patient-input").should("have.text", "");
+        cy.get("#subject-input").should("have.text", "");
+        cy.get("#log-input").should("have.text", "");
+    });
+    it("Records with empty fields to return 500 status code (should clear fields afterwards)", () => {
+        cy.mount(
+            <AddRecordPanel patientList={{username: "test user"}} />
+        );
+
+        // Wait for response from the server and check statusCode
+        cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/registerrecord').as('req')
+        cy.get("button").click();
+        cy.wait('@req', {responseTimeout: 10000, requestTimeout:10000}).its('response.statusCode').should('eq', 500)
+
         cy.get("#patient-input").should("have.text", "");
         cy.get("#subject-input").should("have.text", "");
         cy.get("#log-input").should("have.text", "");
