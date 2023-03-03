@@ -19,6 +19,7 @@ import {
 import { requestConfig } from "../../utils/requests/requestConfig";
 import { toast } from "react-hot-toast";
 import { BiRefresh } from "react-icons/bi";
+import PageLoading from "../../components/shared/PageLoading";
 
 const patientRecords: PatientRecords = [
     {
@@ -26,28 +27,28 @@ const patientRecords: PatientRecords = [
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Michael Chris",
         subject: "SevereMigrains",
-        id: "1"
+        id: "1",
     },
     {
         clinic: "Children Smiles",
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Timothy Patrick",
         subject: "Brain Tumors",
-        id: "2"
+        id: "2",
     },
     {
         clinic: "TMed Clinic",
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Tyler Richard",
         subject: "Bad Kidney",
-        id: "3"
+        id: "3",
     },
     {
         clinic: "Bays Dentals",
         dateTime: "12:00 pm 01/30/2023",
         doctor: "Dr. Simeon Ray",
         subject: "Tiredness",
-        id: "4"
+        id: "4",
     },
 ];
 
@@ -76,9 +77,9 @@ function Profile() {
     const loadInfoInit = async (username: string) => {
         setIsLoadingPH(true);
         const result = await patientRequests(requestConfig).getPatientInfo(
-            "EmmaJames",
+            username,
             currentPage.toString(),
-            "2",
+            "10",
             lastEvaluatedKeyRef.current || ""
         );
 
@@ -91,48 +92,49 @@ function Profile() {
                 Math.ceil(
                     result.result.records.total_items /
                         result.result.records.items_per_page
-                ) - 1 || Math.ceil(result.result.records.total_items /
-                        result.result.records.items_per_page)
+                ) - 1 ||
+                    Math.ceil(
+                        result.result.records.total_items /
+                            result.result.records.items_per_page
+                    )
             );
         // TODO_END
-        result.result != null && setCurrentPage(result.result.records.current_page);
-        lastEvaluatedKeyRef.current = result.result?.records.lastEvaluatedKey || ""
+        result.result != null &&
+            setCurrentPage(result.result.records.current_page);
+        lastEvaluatedKeyRef.current =
+            result.result?.records.lastEvaluatedKey || "";
         result.result != null && setPatientInfoAndRecords(result.result);
         setIsLoadingPH(false);
         setIsNavigating(false);
     };
-    
+
     const nextPage = () => {
-        if(currentPage !== lastPage && isNavigating === false){
-            setIsNavigating(true)
-            setCurrentPage(prev => prev+1)
+        if (currentPage !== lastPage && isNavigating === false) {
+            setIsNavigating(true);
+            setCurrentPage((prev) => prev + 1);
         }
-    }
+    };
 
     const prevPage = () => {
+        if (currentPage > 1 && isNavigating === false) {
+            setIsNavigating(true);
+            setCurrentPage((prev) => prev - 1);
+        }
+    };
 
-        if(currentPage > 1 && isNavigating=== false ){
-            setIsNavigating(true)
-            setCurrentPage(prev => prev-1)
+    const refreshPage = () => {
+        if (isNavigating === false) {
+            setIsNavigating(true);
+            setCurrentPage(1);
         }
-        }
-
-    const refreshPage = () =>{
-        if(isNavigating === false){
-            setIsNavigating(true)
-            setCurrentPage(1)
-        }
-    }
-    
+    };
 
     useEffect(() => {
         loadInfoInit(user.username as string);
     }, [currentPage]);
 
-
-
     if (isLoadingPH && patientInfoAndRecords == null) {
-        return <h1>Loading...</h1>;
+        return <PageLoading />;
     }
 
     if (patientInfoAndRecords && patientInfoAndRecords.error) {
@@ -202,7 +204,7 @@ function Profile() {
                                 clinic: record.clinic,
                                 subject: record.subject,
                                 doctor: record.doctorName,
-                                id: record.recordid
+                                id: record.recordid,
                             };
                         })) ||
                     []

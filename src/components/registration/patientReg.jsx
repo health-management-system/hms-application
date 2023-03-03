@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { patientRequests } from '../../utils/requests/patient';
 import { requestConfig } from '../../utils/requests/requestConfig';
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import toast from 'react-hot-toast';
 import './registration.css'
 
@@ -11,7 +12,9 @@ function RegisterPatient ({user}) {
     const username = user.username
     const navigate = useNavigate()
     const [isUpdated, setUpdated] = useState(false)
+    const [loading, setLoading] = useState(false)
 
+    
     const register = async() => {
         const firstname = document.getElementById('firstname').value
         const lastname = document.getElementById('lastname').value
@@ -23,6 +26,7 @@ function RegisterPatient ({user}) {
         const healthCardNumber = document.getElementById('healthCardNumber').value
 
         document.getElementById('patient-update-info-form').reset()
+        setLoading(true)
 
         const patient = {
             userid: username,
@@ -51,14 +55,14 @@ function RegisterPatient ({user}) {
                 }
               })
         }
+        setLoading(false)
         setUpdated(true)
         console.log(isUpdated)
     }
 
     if(isUpdated) {
-        navigate('/doctorinfo')
+        navigate('/patientinfo')
     }
-
     return (
         <div className = 'inner-box rounded-md'>
             <form id='patient-update-info-form'>
@@ -95,7 +99,11 @@ function RegisterPatient ({user}) {
                     <input className='registration-input rounded-md' type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
                 </div>
             </form>
-            <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' id='submit-button' onClick={register}>Submit</button>
+            <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' id='submit-button' onClick={register} disabled={loading}>
+                {loading ? <div className='flex space-x-3 justify-center items-center'><AiOutlineLoading3Quarters className="animate-spin text-white" /><h1>Loading</h1></div>:<span>Submit</span>}
+                
+                
+                </button>
         </div>
     )
 }

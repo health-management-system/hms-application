@@ -46,15 +46,17 @@ function ViewRecord() {
         }
       }, [])
 
-    if(!hasRecordID) {
+    if(!foundRecord || !hasRecordID) {
         return (
-            <h1>Error: missing a recordid key</h1>
-        )
-    }
-
-    if(!foundRecord) {
-        return (
-            <h1>Error: record not found</h1>
+            <div className='error-no-background'>
+                <div className='error-page'>
+                    <h1 className='page-not-found-header'>Record Not Found</h1>
+                    <div className="error-div rounded-md">
+                        The record you are looking for could not be found. Please go back and try to view another record.
+                    </div>
+                    <button className="error-page-button hover:bg-priHover rounded-md" onClick={patientInfo}>Go Back</button>
+                </div>
+            </div>
         )
     }
     

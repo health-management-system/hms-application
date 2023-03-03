@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { doctorRequests } from '../../utils/requests/doctor';
 import { requestConfig } from '../../utils/requests/requestConfig';
 import toast from 'react-hot-toast';
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import './registration.css'
 
 function RegisterDoctor ({user}) {
@@ -11,6 +12,7 @@ function RegisterDoctor ({user}) {
     const username = user.username
     const navigate = useNavigate()
     const [isUpdated, setUpdated] = useState(false)
+    const [loading, setLoading] = useState(false)
     
 
     const register = async() => {
@@ -23,7 +25,7 @@ function RegisterDoctor ({user}) {
         const phoneNumber = document.getElementById('phoneNumber').value
 
         document.getElementById('doctor-update-info-form').reset()
-
+        setLoading(true)
         const doctor = {
             doctorid: username,
             firstname: firstname,
@@ -51,6 +53,7 @@ function RegisterDoctor ({user}) {
               })
         }
         setUpdated(true)
+        setLoading(false)
         console.log(isUpdated)
     }
 
@@ -90,7 +93,9 @@ function RegisterDoctor ({user}) {
                     <input className='registration-input rounded-md' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
                 </div>
             </form>
-            <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' id='submit-button' onClick={register}>Submit</button>
+            <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' id='submit-button' disabled={loading} onClick={register}>
+            {loading ? <div className='flex space-x-3 justify-center items-center'><AiOutlineLoading3Quarters className="animate-spin text-white" /><h1>Loading</h1></div>:<span>Submit</span>}
+                </button>
         </div>
     )
 }

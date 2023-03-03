@@ -2,11 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { doctorRequests } from '../../utils/requests/doctor';
 import { requestConfig } from '../../utils/requests/requestConfig';
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import toast from 'react-hot-toast';
 import './add_record_panel.css'
 
 function AddRecordPanel ({user = {}}) {
-
+    const [loading, setLoading] = useState(false)
     const username = user.username
 
     const postRecord = async() => {
@@ -18,7 +19,7 @@ function AddRecordPanel ({user = {}}) {
             log: document.getElementById('log-input').value
         }
         document.getElementById('post-record-form').reset()
-
+        setLoading(true)
         let result = await doctorRequests(requestConfig).postRecord(record)
         console.log(result)
 
@@ -45,6 +46,7 @@ function AddRecordPanel ({user = {}}) {
                 }
             })
         }
+        setLoading(false)
 
     }
 
@@ -68,7 +70,9 @@ function AddRecordPanel ({user = {}}) {
                         <textarea type='text' className='add-record-textarea rounded-md' id='log-input'></textarea>
                     </div>
                 </form>
-                <button className='add-record-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' onClick={postRecord}>Post</button>
+                <button className='add-record-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' onClick={postRecord}>
+                    {loading ? <div className='flex space-x-3 justify-center items-center'><AiOutlineLoading3Quarters className="animate-spin text-white" /><h1>Loading</h1></div>:<span>Post</span>}
+                    </button>
             </div>
     )
 
