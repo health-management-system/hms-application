@@ -19,6 +19,7 @@ import {
 import { requestConfig } from "../../utils/requests/requestConfig";
 import { toast } from "react-hot-toast";
 import { BiRefresh } from "react-icons/bi";
+import PageLoading from "../../components/shared/PageLoading";
 
 const patientRecords: PatientRecords = [
     {
@@ -132,7 +133,7 @@ function Profile() {
 
 
     if (isLoadingPH && patientInfoAndRecords == null) {
-        return <h1>Loading...</h1>;
+        return <PageLoading/>;
     }
 
     if (patientInfoAndRecords && patientInfoAndRecords.error) {
