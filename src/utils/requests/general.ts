@@ -13,7 +13,7 @@ export const generalRequests = (config: RequestConfig) => {
                 statusCode: 0,
                 result: EmptyRecord,
             };
-            const params = new URLSearchParams([['recordid', recordid]])
+            const params = new URLSearchParams([["recordid", recordid]]);
             await axios
                 .get(config.baseUrl + "/findarecord", { params: params })
                 .then((res) => {
@@ -31,16 +31,18 @@ export const generalRequests = (config: RequestConfig) => {
 
 export const EmptyRecord: RecordType = {
     subject: "",
+    doctorUsername: "",
     doctorName: "",
     date: "",
     log: "",
-    clinic: ""
-}
+    clinic: "",
+};
 
 export type RecordType = {
-    subject:string;
-    doctorName:string;
-    date:string;
-    log:string;
-    clinic:string;
-}
+    subject: string;
+    doctorUsername: string;
+    doctorName: string;
+    date: string;
+    log: string;
+    clinic: string;
+};

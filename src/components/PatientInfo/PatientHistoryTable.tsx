@@ -1,10 +1,12 @@
 import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 export type PatientRecords = {
     dateTime: string;
     clinic: string;
     doctor: string;
     subject: string;
+    id: string;
 }[];
 
 type PatientHistoryTableProps = {
@@ -15,6 +17,12 @@ type PatientHistoryTableProps = {
 };
 
 export const PatientHistoryTable = (props: PatientHistoryTableProps) => {
+    const navigate = useNavigate();
+
+    const navigateToSingleId = (recordId:string) =>{
+        navigate("/patientinfo/viewRecord?recordid="+recordId)
+    }
+
     return (
         <div className="bg-secCol w-full  rounded-xl overflow-x-scroll md:overflow-hidden ">
             <div className="w-[800px] md:w-full">
@@ -70,6 +78,8 @@ export const PatientHistoryTable = (props: PatientHistoryTableProps) => {
                                     ? "border-b-[1px] border-black"
                                     : ""
                             }`}
+                            key={record.id}
+                            onClick = {()=>navigateToSingleId(record.id)}
                         >
                             <h1 className="group-hover:underline">
                                 {record.dateTime}

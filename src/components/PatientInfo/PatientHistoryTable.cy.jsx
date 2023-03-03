@@ -2,14 +2,23 @@
 import React from "react";
 import { PatientHistoryTable } from "./PatientHistoryTable";
 import "../../../node_modules/tailwindcss/tailwind.css";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Test for the PatientHistoryTable", () => {
     it("Renders", () => {
-        cy.mount(<PatientHistoryTable />);
+        cy.mount(
+            <MemoryRouter initialEntries={["/"]}>
+                <PatientHistoryTable />
+            </MemoryRouter>
+        );
     });
 
     it("Shows the header of the table", () => {
-        cy.mount(<PatientHistoryTable />);
+        cy.mount(
+            <MemoryRouter initialEntries={["/"]}>
+                <PatientHistoryTable />
+            </MemoryRouter>
+        );
         cy.get("[data-cy=PatientHistoryTable-table-headers").contains(
             "Date & Time"
         );
@@ -21,7 +30,11 @@ describe("Test for the PatientHistoryTable", () => {
     });
 
     it("Shows a loading message to users if loading state is true", () => {
-        cy.mount(<PatientHistoryTable isLoadingHistory={true} />);
+        cy.mount(
+            <MemoryRouter initialEntries={["/"]}>
+                <PatientHistoryTable isLoadingHistory={true} />
+            </MemoryRouter>
+        );
         cy.get('[data-cy="PatientHistoryTable-loading-container"]').find(
             '[data-cy="PatientHistoryTable-loading-spinner"]'
         );
@@ -33,11 +46,13 @@ describe("Test for the PatientHistoryTable", () => {
     it("Shows an error message and a clickable button that can perform an action", () => {
         const onRefresh = cy.spy().as("onRefresh");
         cy.mount(
-            <PatientHistoryTable
-                isLoadingHistory={false}
-                errorLoadingHistory={true}
-                refreshHandler={onRefresh}
-            />
+            <MemoryRouter initialEntries={["/"]}>
+                <PatientHistoryTable
+                    isLoadingHistory={false}
+                    errorLoadingHistory={true}
+                    refreshHandler={onRefresh}
+                />
+            </MemoryRouter>
         );
 
         cy.get('[data-cy="PatientHistoryTable-error-container"]').find(
@@ -78,7 +93,12 @@ describe("Test for the PatientHistoryTable", () => {
             },
         ];
         cy.mount(
-            <PatientHistoryTable isLoadingHistory={false} history={dummydata} />
+            <MemoryRouter initialEntries={["/"]}>
+                <PatientHistoryTable
+                    isLoadingHistory={false}
+                    history={dummydata}
+                />
+            </MemoryRouter>
         );
         cy.get('[data-cy="PatientHistoryTable-record-field"]').should(
             "have.length",

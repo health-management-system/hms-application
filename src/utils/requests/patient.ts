@@ -78,6 +78,8 @@ type RecordRow = {
     doctorName: string;
     clinic: string;
     subject: string;
+    dateTime: string;
+    recordid: string
 };
 
 export type PatientInfo = {
