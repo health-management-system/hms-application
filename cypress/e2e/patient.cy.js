@@ -96,9 +96,7 @@ describe('Existing Patient Tests', () => {
         cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '1')
         
         // Paginate Forward
-        //cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/findpatient').as('res')
         cy.get('[data-cy="PaginationNavigator-rightclick"] > path').click()
-        //cy.wait('@res', {responseTimeout: 20000, requestTimeout:20000})
         
         //Assert user is now on page 2
         cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '2')
@@ -108,5 +106,43 @@ describe('Existing Patient Tests', () => {
 
         //Assert user goes back to page 1
         cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '1')
+
+        // Paginate Forward
+        cy.get('[data-cy="PaginationNavigator-rightclick"] > path').click()
+
+        // Click refresh button
+        cy.get('[data-cy="refesh-table-button"]').click()
+
+        //Assert user starts on page 1
+        cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '1')
+    })
+})
+
+describe('New patient Tests', () => {
+    // Sign In before each test
+    beforeEach(() => {
+        // Visit site address
+        cy.visit('http://localhost:3000/')
+    
+        // Check login is visible
+        cy.get('.amplify-button--primary').should('be.visible')
+    
+        // Login with test user credentials
+        cy.get('#amplify-id-\\:ra\\:').type(user2.username)
+        cy.get('#amplify-id-\\:rg\\:').type(user2.password)
+        cy.get('.amplify-button--primary').click()
+        
+        // Enter the Doctor Profile
+        cy.get('.content > div > :nth-child(3)').click()
+    
+        // Check the URL is updated correctly
+        cy.url().should('include', '/patientInfo')
+    })
+    it('Test new doctor user is redirected to registration', () => {
+        // Check that the url matches the registration page
+        cy.url().should('include', '/patientinfo/update')
+
+        // Assert alert is displayed
+        cy.get('.go2072408551').should('be.visible')
     })
 })

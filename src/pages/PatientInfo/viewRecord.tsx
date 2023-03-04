@@ -27,24 +27,30 @@ function ViewRecord() {
         navigate(path)
     }
 
-    const getRecord = async(recordid: string) => {
+    const getRecord = async() => {
         setLoading(true)
-        const result = await generalRequests(requestConfig).getRecord(recordid)
-        if(result.statusCode === 200 && Object.keys(result.result).length !== 0){
-            setRecord(result.result)
-            setFoundRecord(true)
+        const id = searchParams.get("recordid")
+        console.log(id)
+        if (id != null) {
+            setHasRecordID(true)
+            const result = await generalRequests(requestConfig).getRecord(id||"")
+            if(result.statusCode === 200 && Object.keys(result.result).length !== 0){
+                setRecord(result.result)
+                setFoundRecord(true)
+            }
         }
         setLoading(false)
     }
 
     useEffect(() => {
-        const recordid = searchParams.get("recordid")
-        console.log(recordid)
-        if (recordid != null) {
-            setHasRecordID(true)
-            getRecord(recordid)
-        }
+        getRecord()
       }, [])
+
+    if(isLoading) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
 
     if(!foundRecord || !hasRecordID) {
         return (

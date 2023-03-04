@@ -178,6 +178,7 @@ function Profile() {
                 <div className="space-x-6 flex">
                     {/* Refresh */}
                     <BiRefresh
+                        data-cy={'refesh-table-button'}
                         className="text-4xl text-priCol cursor-pointer"
                         onClick={refreshPage}
                     />
