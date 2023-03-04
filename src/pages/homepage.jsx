@@ -30,7 +30,7 @@ function Homepage({ signOut, user}) {
 
         <div className="background-image">
         <div className="content">
-        <b><h1>Welcome {user.username}</h1></b>
+        <b><h1 data-cy='homepage-header'>Welcome {user.username}</h1></b>
         <p>Select your Role to be redirected</p>
         <div>
         <button className='home-button hover:bg-priHover' onClick={signOut} >Sign out</button>
