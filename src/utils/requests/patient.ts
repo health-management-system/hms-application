@@ -15,10 +15,10 @@ export const patientRequests = (config: RequestConfig) => {
                     response.message =
                         "Patient " + body.userid + " has been registered";
                 })
-                .catch((err) => {
-                    response.statusCode = err.response.status;
-                    response.message = "Something has gone wrong";
-                });
+                // .catch((err) => {
+                //     response.statusCode = err.response.status;
+                //     response.message = "Something has gone wrong";
+                // });
             return response;
         },
         getPatientInfo: async (
@@ -50,10 +50,10 @@ export const patientRequests = (config: RequestConfig) => {
                     response.statusCode = res.status;
                     response.result = res.data;
                 })
-                .catch((err) => {
-                    response.statusCode = err.response.statusCode;
-                    response.code = err.code;
-                });
+                // .catch((err) => {
+                //     response.statusCode = err.response.statusCode;
+                //     response.code = err.code;
+                // });
 
             return response;
         },

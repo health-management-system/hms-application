@@ -9,7 +9,6 @@ function NavBar({ role, signOut }) {
     const [active, setActive] = useState(false);
     const navToggle = () => {
         setActive((prevState) => {
-            console.log(prevState);
             return !prevState;
         });
     };
@@ -50,16 +49,16 @@ function NavBar({ role, signOut }) {
                 </div>
             </nav>
             <div
-                data-cy={active ?"Navbar-background-on": "Navbar-background-off"}
+                data-cy={
+                    active ? "Navbar-background-on" : "Navbar-background-off"
+                }
                 className={` ${
-                    active
-                        ? "block"
-                        : "hidden"
+                    active ? "block" : "hidden"
                 } w-full h-[92vh] bg-black opacity-40 absolute`}
                 onClick={closeNavBar}
             ></div>
             <div
-            data-cy={active?"Navbar-sidebar-on" : "Navbar-sidebar-off"}
+                data-cy={active ? "Navbar-sidebar-on" : "Navbar-sidebar-off"}
                 className={`Nav__sidemenu h-[92vh] w-[40vw] md:w-[30vw] absolute bg-secCol md:-left-[30vw] -left-[40vw] ease-out duration-300 p-10 ${
                     active
                         ? "translate-x-[40vw] md:translate-x-[30vw] active"
@@ -117,7 +116,7 @@ function PatientNavList({ onClick }) {
     };
 
     return (
-        <ul data-cy="Navbar-sidebar-patient"  className="space-y-6">
+        <ul data-cy="Navbar-sidebar-patient" className="space-y-6">
             <li
                 className="group cursor-pointer space-y-3"
                 onClick={navigationHandler("")}
