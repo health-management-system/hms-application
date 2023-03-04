@@ -16,12 +16,12 @@ function Homepage({ signOut, user}) {
     let navigate = useNavigate()
     
     const doctorInfo = () => {
-        let path = '/doctorInfo'
+        let path = '/doctorinfo'
         navigate(path)
     }
 
     const patientInfo = () => {
-      let path = '/patientInfo'
+      let path = '/patientinfo'
       navigate(path)
     }
 

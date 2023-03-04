@@ -4,6 +4,7 @@ import { generalRequests, RecordType, EmptyRecord } from '../../utils/requests/g
 import { requestConfig } from '../../utils/requests/requestConfig';
 import { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from "react-router-dom";
+import PageLoading from "../../components/shared/PageLoading";
 
 // const mockRecord = {
 //     subject: "Sickness",
@@ -17,7 +18,7 @@ function ViewRecord() {
 
     const [Record, setRecord] = useState<RecordType>(EmptyRecord)
     const [foundRecord, setFoundRecord] = useState(false);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(true);
     const [hasRecordID, setHasRecordID] = useState(false);
     const [searchParams] = useSearchParams();
     let navigate = useNavigate()
@@ -28,9 +29,8 @@ function ViewRecord() {
     }
 
     const getRecord = async() => {
-        setLoading(true)
+        //setLoading(true)
         const id = searchParams.get("recordid")
-        console.log(id)
         if (id != null) {
             setHasRecordID(true)
             const result = await generalRequests(requestConfig).getRecord(id||"")
@@ -48,11 +48,11 @@ function ViewRecord() {
 
     if(isLoading) {
         return (
-            <h1>Loading...</h1>
+            <PageLoading />
         )
     }
 
-    if(!foundRecord || !hasRecordID) {
+    if(!isLoading && (!foundRecord || !hasRecordID)) {
         return (
             <div className='error-without-background md:px-20 px-10 py-10'>
                 <div className='error-page'>

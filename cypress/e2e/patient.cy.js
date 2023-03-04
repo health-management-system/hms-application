@@ -1,3 +1,5 @@
+import { slowCypressDown } from 'cypress-slow-down'
+
 // E2E test using test users
 const user1 = {
     username: "e2e_patient",
@@ -9,6 +11,35 @@ const user2 = {
 }
 
 import generateRandomString from "./utils"
+
+describe('New patient Tests', () => {
+    // Sign In before each test
+    beforeEach(() => {
+        // Visit site address
+        cy.visit('/')
+    
+        // Check login is visible
+        cy.get('.amplify-button--primary').should('be.visible')
+    
+        // Login with test user credentials
+        cy.get('#amplify-id-\\:ra\\:').type(user2.username)
+        cy.get('#amplify-id-\\:rg\\:').type(user2.password)
+        cy.get('.amplify-button--primary').click()
+        
+        // Enter the Doctor Profile
+        cy.get('.content > div > :nth-child(3)').click()
+    
+        // Check the URL is updated correctly
+        cy.url().should('include', '/patientinfo')
+    })
+    it('Test new patient user is redirected to registration', () => {
+        // Check that the url matches the registration page
+        cy.url().should('include', '/patientinfo/update')
+
+        // Assert alert is displayed
+        cy.get('.go2072408551').should('be.visible')
+    })
+})
 
 describe('Existing Patient Tests', () => {
     // Sign In before each test
@@ -25,12 +56,12 @@ describe('Existing Patient Tests', () => {
         cy.get('.amplify-button--primary').click()
 
         // Enter the Patient Profile
-        //cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest//findpatient').as('req')
+        cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/findpatient*').as('req')
         cy.get('.content > div > :nth-child(3)').click()
-        //cy.wait('@req').its('response.statusCode').should('eq', 200)
+        cy.wait('@req').its('response.statusCode').should('eq', 200)
 
         // Check the URL is updated correctly
-        cy.url().should('include', '/patientInfo')
+        cy.url().should('include', '/patientinfo')
     })
     it('Test user can update patient info', () => {
         // generate info
@@ -72,7 +103,7 @@ describe('Existing Patient Tests', () => {
         // Assert alert is displayed
         cy.get('.go3958317564').should('be.visible')
     })
-    it('Tests user can successfully post a record', () => {
+    it('Tests user can successfully view a record', () => {
         // Click on a record in the table
         cy.get("[data-cy=PatientHistoryTable-record-field]").first().click()
 
@@ -89,59 +120,50 @@ describe('Existing Patient Tests', () => {
         cy.url().should('include', '/patientinfo')
         cy.get('.py-10 > :nth-child(1)').should('contain.text', 'General Info')
     })
+
+    // Run this test last as it needs to slow Cypress (All tests after it will run slow)
     it('Tests user can paginate forward and backwards', () => {
-        
+        // Slow down cypress interactions
+        slowCypressDown(2000)
+
         //Assert user starts on page 1
         cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '1')
         
         // Paginate Forward
+        cy.intercept('https://j4mbz2k3ad.execute-api.us-east-1.amazonaws.com/latest/findpatient*').as('res')
         cy.get('[data-cy="PaginationNavigator-rightclick"] > path').click()
-        
-        //Assert user is now on page 2
-        cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '2')
+            .wait('@res', {responseTimeout: 10000, requestTimeout:10000})
+     
+        // Assert user is now on page 2
+        cy.get("[data-cy=PatientHistoryTable-record-field]", { timeout: 10000 }).first().should('be.visible')
+        cy.get('[data-cy="PaginationNavigator-currentpage"]', { timeout: 10000 }).should('have.text', '2')
 
         // Go back to page 1
         cy.get('[data-cy="PaginationNavigator-leftclick"] > path').click()
+            .wait('@res', {responseTimeout: 10000, requestTimeout:10000})
+
 
         //Assert user goes back to page 1
-        cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '1')
+        cy.get("[data-cy=PatientHistoryTable-record-field]", { timeout: 10000 }).first().should('be.visible')
+        cy.get('[data-cy="PaginationNavigator-currentpage"]', { timeout: 10000 }).should('have.text', '1')
 
         // Paginate Forward
         cy.get('[data-cy="PaginationNavigator-rightclick"] > path').click()
+            .wait('@res', {responseTimeout: 10000, requestTimeout:10000})
+
+        // //Assert user goes back to page 2
+        cy.get("[data-cy=PatientHistoryTable-record-field]", { timeout: 10000 }).first().should('be.visible')
+        cy.get('[data-cy="PaginationNavigator-currentpage"]', { timeout: 10000 }).should('have.text', '2')
 
         // Click refresh button
         cy.get('[data-cy="refesh-table-button"]').click()
+            .wait('@res', {responseTimeout: 10000, requestTimeout:10000})
 
-        //Assert user starts on page 1
-        cy.get('[data-cy="PaginationNavigator-currentpage"]').should('have.text', '1')
-    })
-})
+        // //Assert user starts on page 1
+        cy.get("[data-cy=PatientHistoryTable-record-field]", { timeout: 10000 }).first().should('be.visible')
+        cy.get('[data-cy="PaginationNavigator-currentpage"]', { timeout: 10000 }).should('have.text', '1')
 
-describe('New patient Tests', () => {
-    // Sign In before each test
-    beforeEach(() => {
-        // Visit site address
-        cy.visit('/')
-    
-        // Check login is visible
-        cy.get('.amplify-button--primary').should('be.visible')
-    
-        // Login with test user credentials
-        cy.get('#amplify-id-\\:ra\\:').type(user2.username)
-        cy.get('#amplify-id-\\:rg\\:').type(user2.password)
-        cy.get('.amplify-button--primary').click()
-        
-        // Enter the Doctor Profile
-        cy.get('.content > div > :nth-child(3)').click()
-    
-        // Check the URL is updated correctly
-        cy.url().should('include', '/patientInfo')
-    })
-    it('Test new doctor user is redirected to registration', () => {
-        // Check that the url matches the registration page
-        cy.url().should('include', '/patientinfo/update')
-
-        // Assert alert is displayed
-        cy.get('.go2072408551').should('be.visible')
+        // Return cypress interactions to regular speed
+        slowCypressDown(false)
     })
 })

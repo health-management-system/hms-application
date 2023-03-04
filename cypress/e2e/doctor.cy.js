@@ -14,7 +14,7 @@ describe('Existing Doctor Tests', () => {
     // Sign In before each test
     beforeEach(() => {
         // Visit site address
-        cy.visit('http://localhost:3000/')
+        cy.visit('/')
 
         // Check login is visible
         cy.get('.amplify-button--primary').should('be.visible')
@@ -28,7 +28,7 @@ describe('Existing Doctor Tests', () => {
         cy.get('.content > div > :nth-child(2)').click()
 
         // Check the URL is updated correctly
-        cy.url().should('include', '/doctorInfo')
+        cy.url().should('include', '/doctorinfo')
     })
     it('Test user can update patient info', () => {
         // generate info
@@ -108,7 +108,7 @@ describe('New doctor Tests', () => {
     // Sign In before each test
     beforeEach(() => {
         // Visit site address
-        cy.visit('http://localhost:3000/')
+        cy.visit('/')
     
         // Check login is visible
         cy.get('.amplify-button--primary').should('be.visible')
@@ -122,7 +122,7 @@ describe('New doctor Tests', () => {
         cy.get('.content > div > :nth-child(2)').click()
     
         // Check the URL is updated correctly
-        cy.url().should('include', '/doctorInfo')
+        cy.url().should('include', '/doctorinfo')
     })
     it('Test new doctor user is redirected to registration', () => {
         // Check that the url matches the registration page
