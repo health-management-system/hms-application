@@ -20,10 +20,11 @@ export const generalRequests = (config: RequestConfig) => {
                     response.statusCode = res.status;
                     response.result = res.data;
                 })
-                .catch((err) => {
-                    response.statusCode = err.response.statusCode;
-                    response.code = err.code;
-                });
+                // Uncomment later when backend adds the error
+                // .catch((err) => {
+                //     response.statusCode = err.response.statusCode;
+                //     response.code = err.code;
+                // });
             return response;
         },
     };
