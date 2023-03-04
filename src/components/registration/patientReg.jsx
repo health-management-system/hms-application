@@ -76,7 +76,7 @@ function RegisterPatient ({user}) {
                 </div>
                 <div key='dob' className='registration-div'>
                     <label className='registration-label'>Date of Birth:</label>
-                    <input className='registration-input rounded-md' type='text' id='dateOfBirth' placeholder='Enter Date of Birth'/>
+                    <input className='registration-input rounded-md' type='text' id='dateOfBirth' placeholder='Enter Date of Birth (mm/dd/yyyy)'/>
                 </div>
                 <div key='email' className='registration-div'>
                     <label className='registration-label'>Email:</label>

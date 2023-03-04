@@ -63,7 +63,7 @@ function AddRecordPanel ({user = {}}) {
                     </div>
                     <div className="add-record-div">
                         <label className='add-record-label' id='subject-label'>Date:</label>
-                        <input type='text' className='add-record-input rounded-md' id='date-input' placeholder='Enter a date'></input>
+                        <input type='text' className='add-record-input rounded-md' id='date-input' placeholder='Enter a date (ex: mm/dd/yyyy)'></input>
                     </div>
                     <div className="add-record-div">
                         <label className='add-record-label' id='log-label'>Log:</label>
