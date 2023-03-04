@@ -34,7 +34,7 @@ function ViewRecord() {
         if (id != null) {
             setHasRecordID(true)
             const result = await generalRequests(requestConfig).getRecord(id||"")
-            if(result.statusCode === 200 && Object.keys(result.result).length !== 0){
+            if(result.statusCode === 200 && Object.keys(result.result).length > 1){
                 setRecord(result.result)
                 setFoundRecord(true)
             }
@@ -54,7 +54,7 @@ function ViewRecord() {
 
     if(!foundRecord || !hasRecordID) {
         return (
-            <div className='error-no-background'>
+            <div className='error-without-background md:px-20 px-10 py-10'>
                 <div className='error-page'>
                     <h1 className='page-not-found-header'>Record Not Found</h1>
                     <div className="error-div rounded-md">

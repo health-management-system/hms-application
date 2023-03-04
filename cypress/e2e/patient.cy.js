@@ -14,7 +14,7 @@ describe('Existing Patient Tests', () => {
     // Sign In before each test
     beforeEach(() => {
         // Visit site address
-        cy.visit('http://localhost:3000/')
+        cy.visit('/')
 
         // Check login is visible
         cy.get('.amplify-button--primary').should('be.visible')
@@ -66,8 +66,7 @@ describe('Existing Patient Tests', () => {
         cy.get(':nth-child(4) > .user-info-span').should('have.text', email)
         cy.get(':nth-child(5) > .user-info-span').should('have.text', address)
         cy.get(':nth-child(6) > .user-info-span').should('have.text', phoneNumber)
-        // UNCOMMENT WHEN BACKEND FIXES THIS
-        //cy.get(':nth-child(7) > .user-info-span').should('have.text', postalCode)
+        cy.get(':nth-child(7) > .user-info-span').should('have.text', postalCode)
         cy.get(':nth-child(8) > .user-info-span').should('have.text', healthCardNumber)
     
         // Assert alert is displayed
@@ -122,7 +121,7 @@ describe('New patient Tests', () => {
     // Sign In before each test
     beforeEach(() => {
         // Visit site address
-        cy.visit('http://localhost:3000/')
+        cy.visit('/')
     
         // Check login is visible
         cy.get('.amplify-button--primary').should('be.visible')

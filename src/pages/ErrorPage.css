@@ -6,25 +6,35 @@
     padding: 12% 25%;
 }
 
+.error-without-background {
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:100vh;
+    padding: 12% 25%;
+}
+
 .error-div {
     font-size: 2em;
     margin-top: 2%;
     text-align: center;
     margin-bottom: 2%;
     margin-left: 8%;
-    width: 84%;
+    width: 60%;
+    margin-left: 20%;
     background-color: #ede7dc;
-    padding: 1em 3em 1em 3em;
+    padding: 1em 2em 1em 2em;
     opacity: 90%;
 }
 
 .page-not-found-header {
     background-color: #153243;
-    font-size: 6em;
+    font-size: 4em;
     font-weight: 400;
+    width: 60%;
+    margin-left: 20%;
     color: white;
     text-align: center;
-    padding: 1em 0.3em 1em 0.3em;
+    padding: 0.5em 0.3em 0.5em 0.3em;
     opacity: 90%;
 }
 

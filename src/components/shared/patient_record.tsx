@@ -30,7 +30,7 @@ function patientRecord(props: { record: RecordType }) {
                     <li className="view-record-list-item rounded-md">
                         <label className="view-record-label">Date: </label>{" "}
                         <span className="view-record-span">
-                            {props.record.date}
+                            {props.record.dateTime}
                         </span>
                     </li>
                     <li className="view-record-log-li rounded-md">

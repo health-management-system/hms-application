@@ -34,7 +34,8 @@ export const EmptyRecord: RecordType = {
     subject: "",
     doctorUsername: "",
     doctorName: "",
-    date: "",
+    dateTime: "",
+    patientUsername: "string",
     log: "",
     clinic: "",
 };
@@ -43,7 +44,8 @@ export type RecordType = {
     subject: string;
     doctorUsername: string;
     doctorName: string;
-    date: string;
+    dateTime: string;
+    patientUsername: string;
     log: string;
     clinic: string;
 };
