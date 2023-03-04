@@ -32,7 +32,7 @@ describe('General User Tests',()=>{
    //click on go back button
   cy.get('.error-page-button').click()
     // Check that we have returned home
-  cy.get('[data-cy=homepage-header]').should('be.visible')
+  cy.get('[data-cy="PatientHistoryTable-table-headers"]').should('be.visible')
 
 })
 
@@ -46,9 +46,9 @@ describe('General User Tests',()=>{
     //vew log filed should be visible
     cy.get('.page-not-found-header').should('be.visible')
     //click on go back button
-    //cy.get('.py-10 > .bg-priCol').click()
+    cy.get('.py-10 > .bg-priCol').click()
      // Check that we have returned home
-    //cy.get('[data-cy=homepage-header]').should('be.visible')
+     cy.get('[data-cy="PatientHistoryTable-table-headers"]').should('be.visible')
 
   })
 
@@ -65,9 +65,8 @@ describe('General User Tests',()=>{
     cy.get('.error-page-button').click()
     
     // Check that we have returned home
-    cy.get('[data-cy=homepage-header]').should('be.visible')
+    cy.get('[data-cy="PatientHistoryTable-table-headers"]').should('be.visible')
 
   })
-
 
 })
