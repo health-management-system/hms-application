@@ -82,12 +82,12 @@ function Profile() {
             "10",
             lastEvaluatedKeyRef.current || ""
         );
-
-        // TODO: this snippet of code takes the second to the last page as the lastpage,
-        // this is due to errors coming from the backend when navigating from the last page to the page before the last page
-        // SOLUTION AFTER BACKEND FIX: replace the code in the setLastPage() function with a simple
-        // Math.ceil(total_items/items_per_page)
-        result.result != null &&
+        setPatientInfoAndRecords(result.result);
+        if (result.result != null && !result.result.error) {
+            // TODO: this snippet of code takes the second to the last page as the lastpage,
+            // this is due to errors coming from the backend when navigating from the last page to the page before the last page
+            // SOLUTION AFTER BACKEND FIX: replace the code in the setLastPage() function with a simple
+            // Math.ceil(total_items/items_per_page)
             setLastPage(
                 Math.ceil(
                     result.result.records.total_items /
@@ -98,12 +98,24 @@ function Profile() {
                             result.result.records.items_per_page
                     )
             );
-        // TODO_END
-        result.result != null &&
+            // TODO_END
+            lastEvaluatedKeyRef.current =
+                result.result?.records.lastEvaluatedKey || "";
             setCurrentPage(result.result.records.current_page);
-        lastEvaluatedKeyRef.current =
-            result.result?.records.lastEvaluatedKey || "";
-        result.result != null && setPatientInfoAndRecords(result.result);
+        } else {
+            // https://emojipedia.org/symbols/
+            toast("Please add your information", {
+                id: "Hello",
+                duration: 10000,
+                icon: "📣",
+                style: {
+                    width: "1200em",
+                    height: "3em",
+                    fontSize: "1.2em",
+                },
+            });
+            navigate("/patientinfo/update");
+        }
         setIsLoadingPH(false);
         setIsNavigating(false);
     };
@@ -135,21 +147,6 @@ function Profile() {
 
     if (isLoadingPH && patientInfoAndRecords == null) {
         return <PageLoading />;
-    }
-
-    if (patientInfoAndRecords && patientInfoAndRecords.error) {
-        // https://emojipedia.org/symbols/
-        toast("Please add your information", {
-            id: "Hello",
-            duration: 10000,
-            icon: "📣",
-            style: {
-                width: "1200em",
-                height: "3em",
-                fontSize: "1.2em",
-            },
-        });
-        navigate("/patientinfo/update");
     }
 
     const mapPatientInfo = (patientInfo: PatientInfo) => {
@@ -198,6 +195,7 @@ function Profile() {
                 isLoadingHistory={isLoadingPH}
                 history={
                     (patientInfoAndRecords &&
+                        patientInfoAndRecords.records &&
                         patientInfoAndRecords?.records.records.map((record) => {
                             return {
                                 dateTime: record.dateTime,
