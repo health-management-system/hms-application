@@ -21,66 +21,33 @@ import { toast } from "react-hot-toast";
 import { BiRefresh } from "react-icons/bi";
 import PageLoading from "../../components/shared/PageLoading";
 
-const patientRecords: PatientRecords = [
-    {
-        clinic: "Hope Medicals",
-        dateTime: "12:00 pm 01/30/2023",
-        doctor: "Dr. Michael Chris",
-        subject: "SevereMigrains",
-        id: "1",
-    },
-    {
-        clinic: "Children Smiles",
-        dateTime: "12:00 pm 01/30/2023",
-        doctor: "Dr. Timothy Patrick",
-        subject: "Brain Tumors",
-        id: "2",
-    },
-    {
-        clinic: "TMed Clinic",
-        dateTime: "12:00 pm 01/30/2023",
-        doctor: "Dr. Tyler Richard",
-        subject: "Bad Kidney",
-        id: "3",
-    },
-    {
-        clinic: "Bays Dentals",
-        dateTime: "12:00 pm 01/30/2023",
-        doctor: "Dr. Simeon Ray",
-        subject: "Tiredness",
-        id: "4",
-    },
-];
-
-const patientInfo = [
-    { label: "First Name:", value: "Brian" },
-    { label: "Last Name:", value: "Smith" },
-    { label: "Date of Birth:", value: "1995-09-03" },
-    { label: "Email:", value: "brainsmith@gmail.com" },
-    { label: "Address:", value: "8 Ring Rd, Waterloo ON" },
-    { label: "Phone Number:", value: "517-733-2895" },
-    { label: "Postal Code:", value: "K6F Y9D" },
-    { label: "Health Card No:", value: "78549854985" },
-];
-
 function Profile() {
     const navigate = useNavigate();
     const user = useOutletContext() as Record<string, any>;
     const [isLoadingPH, setIsLoadingPH] = useState<boolean>(true);
-    const [patientInfoAndRecords, setPatientInfoAndRecords] =
-        useState<PatientInfoResult | null>(null);
+    const [patientInfoAndRecords, setPatientInfoAndRecords] = useState<PatientInfoResult | null>(null);
     const [lastPage, setLastPage] = useState(1);
     const lastEvaluatedKeyRef = useRef<string>("");
     const [currentPage, setCurrentPage] = useState(1);
     const [isNavigating, setIsNavigating] = useState(false);
+    const [paginationKeys, setPaginationKeys] = useState<string[]>([])
 
     const loadInfoInit = async (username: string) => {
         setIsLoadingPH(true);
+        
+        // If lastEvaluatedKey for current page exists use it
+        let lastEvaluatedKey = null
+        if(paginationKeys[currentPage] != null) {
+            lastEvaluatedKey = paginationKeys[currentPage]
+        } else {
+            lastEvaluatedKey = lastEvaluatedKeyRef.current || ""
+        }
+
         const result = await patientRequests(requestConfig).getPatientInfo(
             username,
             currentPage.toString(),
-            "10",
-            lastEvaluatedKeyRef.current || ""
+            "5",
+            lastEvaluatedKey
         );
         setPatientInfoAndRecords(result.result);
         if (result.result != null && !result.result.error) {
@@ -101,7 +68,13 @@ function Profile() {
             // TODO_END
             lastEvaluatedKeyRef.current =
                 result.result?.records.lastEvaluatedKey || "";
+
             setCurrentPage(result.result.records.current_page);
+
+            // Add the lastEvaluatedKey to the array at index currentPage
+            let arr = paginationKeys
+            arr[currentPage+1] = result.result.records.lastEvaluatedKey
+            setPaginationKeys(arr) 
         } else {
             // https://emojipedia.org/symbols/
             toast("Please add your information", {
@@ -116,6 +89,7 @@ function Profile() {
             });
             navigate("/patientinfo/update");
         }
+
         setIsLoadingPH(false);
         setIsNavigating(false);
     };
