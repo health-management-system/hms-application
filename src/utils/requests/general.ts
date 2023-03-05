@@ -20,10 +20,11 @@ export const generalRequests = (config: RequestConfig) => {
                     response.statusCode = res.status;
                     response.result = res.data;
                 })
-                .catch((err) => {
-                    response.statusCode = err.response.statusCode;
-                    response.code = err.code;
-                });
+                // Uncomment later when backend adds the error
+                // .catch((err) => {
+                //     response.statusCode = err.response.statusCode;
+                //     response.code = err.code;
+                // });
             return response;
         },
     };
@@ -33,7 +34,8 @@ export const EmptyRecord: RecordType = {
     subject: "",
     doctorUsername: "",
     doctorName: "",
-    date: "",
+    dateTime: "",
+    patientUsername: "string",
     log: "",
     clinic: "",
 };
@@ -42,7 +44,8 @@ export type RecordType = {
     subject: string;
     doctorUsername: string;
     doctorName: string;
-    date: string;
+    dateTime: string;
+    patientUsername: string;
     log: string;
     clinic: string;
 };

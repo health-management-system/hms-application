@@ -4,6 +4,7 @@ import { generalRequests, RecordType, EmptyRecord } from '../../utils/requests/g
 import { requestConfig } from '../../utils/requests/requestConfig';
 import { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from "react-router-dom";
+import PageLoading from "../../components/shared/PageLoading";
 
 // const mockRecord = {
 //     subject: "Sickness",
@@ -17,7 +18,7 @@ function ViewRecord() {
 
     const [Record, setRecord] = useState<RecordType>(EmptyRecord)
     const [foundRecord, setFoundRecord] = useState(false);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(true);
     const [hasRecordID, setHasRecordID] = useState(false);
     const [searchParams] = useSearchParams();
     let navigate = useNavigate()
@@ -27,28 +28,33 @@ function ViewRecord() {
         navigate(path)
     }
 
-    const getRecord = async(recordid: string) => {
-        setLoading(true)
-        const result = await generalRequests(requestConfig).getRecord(recordid)
-        if(result.statusCode === 200 && Object.keys(result.result).length !== 0){
-            setRecord(result.result)
-            setFoundRecord(true)
+    const getRecord = async() => {
+        //setLoading(true)
+        const id = searchParams.get("recordid")
+        if (id != null) {
+            setHasRecordID(true)
+            const result = await generalRequests(requestConfig).getRecord(id||"")
+            if(result.statusCode === 200 && Object.keys(result.result).length > 1){
+                setRecord(result.result)
+                setFoundRecord(true)
+            }
         }
         setLoading(false)
     }
 
     useEffect(() => {
-        const recordid = searchParams.get("recordid")
-        console.log(recordid)
-        if (recordid != null) {
-            setHasRecordID(true)
-            getRecord(recordid)
-        }
+        getRecord()
       }, [])
 
-    if(!foundRecord || !hasRecordID) {
+    if(isLoading) {
         return (
-            <div className='error-no-background'>
+            <PageLoading />
+        )
+    }
+
+    if(!isLoading && (!foundRecord || !hasRecordID)) {
+        return (
+            <div className='error-without-background md:px-20 px-10 py-10'>
                 <div className='error-page'>
                     <h1 className='page-not-found-header'>Record Not Found</h1>
                     <div className="error-div rounded-md">

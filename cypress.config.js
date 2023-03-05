@@ -1,6 +1,8 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  video: false,
+  projectId: 'pbx1kz',
   component: {
     setupNodeEvents(on, config) {
       console.log("setupNodeEvents for components");
@@ -43,6 +45,7 @@ module.exports = defineConfig({
   },
 
   e2e: {
+    baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
       require('@cypress/code-coverage/task')(on, config)
       // include any other plugin code...

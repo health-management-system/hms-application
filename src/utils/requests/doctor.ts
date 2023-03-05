@@ -39,10 +39,13 @@ export const doctorRequests = (config:RequestConfig) => {
             await axios.get(config.baseUrl + "finddoctor", {params}).then(res => {
                 response.statusCode = res.status
                 response.result = res.data
-            }).catch(err => {
-                response.statusCode = err.response.status;
-                response.code = err.code
             })
+
+            // Uncomment when backend implements error checking
+            // .catch(err => {
+            //     response.statusCode = err.response.status;
+            //     response.code = err.code
+            // })
 
             return response
         },
@@ -52,10 +55,14 @@ export const doctorRequests = (config:RequestConfig) => {
             await axios.post(config.baseUrl + 'registerdoctorinfo', body).then((res) => {
                 response.statusCode = res.status
                 response.message = 'Doctor ' + body.doctorid + ' has been registered'
-            }).catch((err) => {
-                response.statusCode = 500
-                response.message = 'Something has gone wrong'
             })
+            
+            // Uncomment when backend implements error checking
+            // .catch((err) => {
+            //     response.statusCode = 500
+            //     response.message = 'Something has gone wrong'
+            // })
+
             return response
         },
 
