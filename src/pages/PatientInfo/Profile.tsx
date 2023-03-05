@@ -46,26 +46,14 @@ function Profile() {
         const result = await patientRequests(requestConfig).getPatientInfo(
             username,
             currentPage.toString(),
-            "5",
+            "10",
             lastEvaluatedKey
         );
         setPatientInfoAndRecords(result.result);
         if (result.result != null && !result.result.error) {
-            // TODO: this snippet of code takes the second to the last page as the lastpage,
-            // this is due to errors coming from the backend when navigating from the last page to the page before the last page
-            // SOLUTION AFTER BACKEND FIX: replace the code in the setLastPage() function with a simple
-            // Math.ceil(total_items/items_per_page)
-            setLastPage(
-                Math.ceil(
-                    result.result.records.total_items /
-                        result.result.records.items_per_page
-                ) - 1 ||
-                    Math.ceil(
-                        result.result.records.total_items /
-                            result.result.records.items_per_page
-                    )
-            );
-            // TODO_END
+
+            setLastPage(Math.ceil(result.result.records.total_items/result.result.records.items_per_page));
+
             lastEvaluatedKeyRef.current =
                 result.result?.records.lastEvaluatedKey || "";
 
