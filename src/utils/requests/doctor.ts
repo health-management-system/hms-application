@@ -21,10 +21,7 @@ type record = {
     subject: string
 }
 
-export const doctorRequests = (config:RequestConfig) => {
-    return {
-        getDoctorInfo: async (username:string) => {
-            let response: {code: string, statusCode: number, result: {} | {
+export type DoctorInfo =  {
                     clinic: string,
                     lastname: string,
                     specialization: string,
@@ -34,7 +31,12 @@ export const doctorRequests = (config:RequestConfig) => {
                     email: string,
                     staffID: string,
                     doctorid: string
-            } } = {code: "", statusCode: 0, result: {}}
+            }
+
+export const doctorRequests = (config:RequestConfig) => {
+    return {
+        getDoctorInfo: async (username:string) => {
+            let response: {code: string, statusCode: number, result: {} | DoctorInfo} = {code: "", statusCode: 0, result: {}}
             const params = new URLSearchParams([['username', username]])
             await axios.get(config.baseUrl + "finddoctor", {params}).then(res => {
                 response.statusCode = res.status

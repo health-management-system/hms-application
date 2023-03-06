@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect, Dispatch,SetStateAction } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { patientRequests } from '../../utils/requests/patient';
 import { requestConfig } from '../../utils/requests/requestConfig';
@@ -7,25 +7,45 @@ import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import toast from 'react-hot-toast';
 import './registration.css'
 
-function RegisterPatient ({user}) {
+function RegisterPatient ({user, userInfo}) {
 
     const username = user.username
     const navigate = useNavigate()
     const [isUpdated, setUpdated] = useState(false)
     const [loading, setLoading] = useState(false)
 
+
+    const [firstname, setFirstname] = useState("")
+    const [lastname, setLastname] = useState("")
+    const [dateOfBirth, setDateOfBirth] = useState("")
+    const [email, setEmail] = useState("")
+    const [phonenumber, setPhoneNumber] = useState("")
+    const [address, setAddress] = useState("")
+    const [postalcode, setPostalCode] = useState("")
+    const [healthCardNumber, setHealthCardNumber] = useState("")
+    
+
+    const onchange = (e, setState) => {
+        setState(e.target.value)
+    }
+
+    useEffect(()=>{
+        if(!userInfo) return
+        setFirstname(userInfo.firstname || "")
+        setLastname(userInfo.lastname || "")
+        setDateOfBirth(userInfo.dateofbirth || "")
+        setEmail(userInfo.email || "")
+        setPhoneNumber(userInfo.phonenumber || "")
+        setAddress(userInfo.address || "")
+        setPostalCode(userInfo.postalcode || "")
+        setHealthCardNumber(userInfo.healthcardnumber || "")
+        console.log(userInfo)
+    },[userInfo])
     
     const register = async() => {
-        const firstname = document.getElementById('firstname').value
-        const lastname = document.getElementById('lastname').value
-        const dateOfBirth = document.getElementById('dateOfBirth').value
-        const email = document.getElementById('email').value
-        const phoneNumber = document.getElementById('phoneNumber').value
-        const address = document.getElementById('address').value
-        const postalCode = document.getElementById('postalCode').value
-        const healthCardNumber = document.getElementById('healthCardNumber').value
+       
 
-        document.getElementById('patient-update-info-form').reset()
+        // document.getElementById('patient-update-info-form').reset()
         setLoading(true)
 
         const patient = {
@@ -34,9 +54,9 @@ function RegisterPatient ({user}) {
             lastname: lastname,
             dateofbirth: dateOfBirth,
             email: email,
-            phonenumber: phoneNumber,
+            phonenumber: phonenumber,
             address: address,
-            postalcode: postalCode,
+            postalcode: postalcode,
             healthcardnumber: healthCardNumber
         }
 
@@ -57,46 +77,45 @@ function RegisterPatient ({user}) {
         }
         setLoading(false)
         setUpdated(true)
+        navigate('/patientinfo')
         console.log(isUpdated)
     }
 
-    if(isUpdated) {
-        navigate('/patientinfo')
-    }
+
     return (
         <div className = 'inner-box rounded-md'>
             <form id='patient-update-info-form'>
                 <div key='firstname' className='registration-div'>
                     <label className='registration-label'>First Name:</label>
-                    <input className='registration-input rounded-md' type='text' id='firstname' placeholder='Enter First Name'/>
+                    <input className='registration-input rounded-md' type='text' id='firstname' placeholder='Enter First Name' value ={firstname} onChange={(e)=>onchange(e, setFirstname)}/>
                 </div>
                 <div key='lastname' className='registration-div'>
                     <label className='registration-label'>Last Name:</label>
-                    <input className='registration-input rounded-md' type='text' id='lastname' placeholder='Enter Last Name'/>
+                    <input className='registration-input rounded-md' type='text' id='lastname' placeholder='Enter Last Name' value ={lastname}onChange={(e)=>onchange(e, setLastname)}/>
                 </div>
                 <div key='dob' className='registration-div'>
                     <label className='registration-label'>Date of Birth:</label>
-                    <input className='registration-input rounded-md' type='text' id='dateOfBirth' placeholder='Enter Date of Birth (ex: mm/dd/yyyy)'/>
+                    <input className='registration-input rounded-md' type='text' id='dateOfBirth' placeholder='Enter Date of Birth (ex: mm/dd/yyyy)' value={dateOfBirth}onChange={(e)=>onchange(e, setDateOfBirth)}/>
                 </div>
                 <div key='email' className='registration-div'>
                     <label className='registration-label'>Email:</label>
-                    <input className='registration-input rounded-md' type='text' id='email' placeholder='Enter Email'/>
+                    <input className='registration-input rounded-md' type='text' id='email' placeholder='Enter Email' value={email} onChange={(e)=>onchange(e, setEmail)}/>
                 </div>
                 <div key='phonenumber' className='registration-div'>
                     <label className='registration-label'>Phone Number:</label>
-                    <input className='registration-input rounded-md' type='text' id='phoneNumber' placeholder='Enter Phone Number'/>
+                    <input className='registration-input rounded-md' type='text' id='phoneNumber' placeholder='Enter Phone Number' value={phonenumber} onChange={(e)=>onchange(e, setPhoneNumber)}/>
                 </div>
                 <div key='address' className='registration-div'>
                     <label className='registration-label'>Address</label>
-                    <input className='registration-input rounded-md' type='text' id='address' placeholder='Enter Address'/>
+                    <input className='registration-input rounded-md' type='text' id='address' placeholder='Enter Address' value={address} onChange={(e)=>onchange(e, setAddress)}/>
                 </div>
                 <div key='postalcode' className='registration-div'>
                     <label className='registration-label'>Postal Code:</label>
-                    <input className='registration-input rounded-md' type='text' id='postalCode' placeholder='Enter Postal Code'/>
+                    <input className='registration-input rounded-md' type='text' id='postalCode' placeholder='Enter Postal Code' value={postalcode} onChange={(e)=>onchange(e, setPostalCode)}/>
                 </div>
                 <div key='healthcard' className='registration-div'>
                     <label className='registration-label'>Health Card Number:</label>
-                    <input className='registration-input rounded-md' type='text' id='healthCardNumber' placeholder='Enter Health Card Number'/>
+                    <input className='registration-input rounded-md' type='text' id='healthCardNumber' placeholder='Enter Health Card Number' value={healthCardNumber} onChange={(e)=>onchange(e, setHealthCardNumber)}/>
                 </div>
             </form>
             <button className='registration-button bg-priCol hover:bg-priHover text-white font-bold rounded-md' id='submit-button' onClick={register} disabled={loading}>
