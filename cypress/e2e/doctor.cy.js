@@ -30,7 +30,7 @@ describe('Existing Doctor Tests', () => {
         // Check the URL is updated correctly
         cy.url().should('include', '/doctorinfo')
     })
-    it('Test user can update patient info', () => {
+    it('Test user can update doctor info', () => {
         // generate info
         const firstname = generateRandomString(10)
         const lastname = generateRandomString(10)
@@ -44,15 +44,15 @@ describe('Existing Doctor Tests', () => {
         cy.get('[data-cy="Navbar-menu-normal"]').click()
         cy.get(':nth-child(2) > h3').click()
         cy.url().should('include', '/doctorinfo/update')
-        
+
         // Update Info
-        cy.get('#firstname').type(firstname)
-        cy.get('#lastname').type(lastname)
-        cy.get('#staffid').type(staffid)
-        cy.get('#clinic').type(clinic)
-        cy.get('#specialization').type(specialization)
-        cy.get('#email').type(email)
-        cy.get('#phoneNumber').type(phonenumber)
+        cy.get('#firstname').clear().type(firstname)
+        cy.get('#lastname').clear().type(lastname)
+        cy.get('#staffid').clear().type(staffid)
+        cy.get('#clinic').clear().type(clinic)
+        cy.get('#specialization').clear().type(specialization)
+        cy.get('#email').clear().type(email)
+        cy.get('#phoneNumber').clear().type(phonenumber)
         cy.get('#submit-button').click()
 
         // Check if updated info appears on profile

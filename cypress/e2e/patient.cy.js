@@ -78,16 +78,17 @@ describe('Existing Patient Tests', () => {
         cy.get('[data-cy="Navbar-menu-normal"]').click()
         cy.get(':nth-child(2) > h3').click()
         cy.url().should('include', '/patientinfo/update')
-        
-        // // Update Info
-        cy.get('#firstname').type(firstname)
-        cy.get('#lastname').type(lastname)
-        cy.get('#dateOfBirth').type(dateOfBirth)
-        cy.get('#email').type(email)
-        cy.get('#phoneNumber').type(phoneNumber)
-        cy.get('#address').type(address)
-        cy.get('#postalCode').type(postalCode)
-        cy.get('#healthCardNumber').type(healthCardNumber)
+
+        // Update Info
+        cy.get('#firstname').clear().type(firstname)
+        cy.get('#lastname').clear().type(lastname)
+        cy.get('#dateOfBirth').clear().type(dateOfBirth)
+        cy.get('#email').clear().type(email)
+        cy.get('#phoneNumber').clear().type(phoneNumber)
+        cy.get('#address').clear().type(address)
+        cy.get('#postalCode').clear().type(postalCode)
+        cy.get('#healthCardNumber').clear().type(healthCardNumber)
+        cy.get('#firstname').clear().type(firstname)
         cy.get('#submit-button').click()
 
         // Check if updated info appears on profile
