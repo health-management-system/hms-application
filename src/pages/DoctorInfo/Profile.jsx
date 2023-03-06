@@ -41,7 +41,7 @@ function Doctorinfo() {
         Object.keys(doctorInfo).length === 0
     ) {
         // https://emojipedia.org/symbols/
-        toast("Please add your infromation", {
+        toast("Please add your information", {
             id: "Hello",
             duration: 10000,
             icon: "📣",
