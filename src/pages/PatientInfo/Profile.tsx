@@ -99,7 +99,12 @@ function Profile() {
     const refreshPage = () => {
         if (isNavigating === false) {
             setIsNavigating(true);
-            setCurrentPage(1);
+            setPaginationKeys([]);
+            if(currentPage != 1) {  
+                setCurrentPage(1);
+            } else {
+                loadInfoInit(user.username as string)
+            }
         }
     };
 
