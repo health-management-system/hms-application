@@ -25,22 +25,23 @@ function Profile() {
     const navigate = useNavigate();
     const user = useOutletContext() as Record<string, any>;
     const [isLoadingPH, setIsLoadingPH] = useState<boolean>(true);
-    const [patientInfoAndRecords, setPatientInfoAndRecords] = useState<PatientInfoResult | null>(null);
+    const [patientInfoAndRecords, setPatientInfoAndRecords] =
+        useState<PatientInfoResult | null>(null);
     const [lastPage, setLastPage] = useState(1);
     const lastEvaluatedKeyRef = useRef<string>("");
     const [currentPage, setCurrentPage] = useState(1);
     const [isNavigating, setIsNavigating] = useState(false);
-    const [paginationKeys, setPaginationKeys] = useState<string[]>([])
+    const [paginationKeys, setPaginationKeys] = useState<string[]>([]);
 
     const loadInfoInit = async (username: string) => {
         setIsLoadingPH(true);
-        
+
         // If lastEvaluatedKey for current page exists use it
-        let lastEvaluatedKey = null
-        if(paginationKeys[currentPage] != null) {
-            lastEvaluatedKey = paginationKeys[currentPage]
+        let lastEvaluatedKey = null;
+        if (paginationKeys[currentPage] != null) {
+            lastEvaluatedKey = paginationKeys[currentPage];
         } else {
-            lastEvaluatedKey = lastEvaluatedKeyRef.current || ""
+            lastEvaluatedKey = lastEvaluatedKeyRef.current || "";
         }
 
         const result = await patientRequests(requestConfig).getPatientInfo(
@@ -51,8 +52,12 @@ function Profile() {
         );
         setPatientInfoAndRecords(result.result);
         if (result.result != null && !result.result.error) {
-
-            setLastPage(Math.ceil(result.result.records.total_items/result.result.records.items_per_page));
+            setLastPage(
+                Math.ceil(
+                    result.result.records.total_items /
+                        result.result.records.items_per_page
+                )
+            );
 
             lastEvaluatedKeyRef.current =
                 result.result?.records.lastEvaluatedKey || "";
@@ -60,9 +65,9 @@ function Profile() {
             setCurrentPage(result.result.records.current_page);
 
             // Add the lastEvaluatedKey to the array at index currentPage
-            let arr = paginationKeys
-            arr[currentPage+1] = result.result.records.lastEvaluatedKey
-            setPaginationKeys(arr) 
+            let arr = paginationKeys;
+            arr[currentPage + 1] = result.result.records.lastEvaluatedKey;
+            setPaginationKeys(arr);
         } else {
             // https://emojipedia.org/symbols/
             toast("Please add your information", {
@@ -100,10 +105,10 @@ function Profile() {
         if (isNavigating === false) {
             setIsNavigating(true);
             setPaginationKeys([]);
-            if(currentPage != 1) {  
+            if (currentPage != 1) {
                 setCurrentPage(1);
             } else {
-                loadInfoInit(user.username as string)
+                loadInfoInit(user.username as string);
             }
         }
     };
@@ -145,14 +150,20 @@ function Profile() {
                 <div className="space-x-6 flex">
                     {/* Refresh */}
                     <BiRefresh
-                        data-cy={'refesh-table-button'}
+                        data-cy={"refesh-table-button"}
                         className="text-4xl text-priCol cursor-pointer"
                         onClick={refreshPage}
                     />
 
                     {/* Paginator */}
                     <PaginationNavigator
-                        currentIndex={currentPage}
+                        currentIndex={
+                            patientInfoAndRecords &&
+                            patientInfoAndRecords.records &&
+                            patientInfoAndRecords.records.records.length > 0
+                                ? currentPage
+                                : 0
+                        }
                         lastPage={lastPage}
                         onLeftClick={prevPage}
                         onRightClick={nextPage}
