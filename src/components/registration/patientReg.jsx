@@ -51,7 +51,6 @@ function RegisterPatient ({user, userInfo}) {
         const isValidEmail = EmailValidator.validate(email)
         // Validate Phone Number (sets country to Canada)
         const isValidPhoneNumber = phone(phonenumber, {country: 'CA'}).isValid; 
-        console.log(isValidPhoneNumber)
         // Validate Date
         const isValidDate = true // Change true assignment
 
