@@ -5,13 +5,14 @@ import { doctorRequests } from '../../utils/requests/doctor';
 import { requestConfig } from '../../utils/requests/requestConfig';
 import toast from 'react-hot-toast';
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
+import EmailValidator from 'email-validator'
+import {phone} from 'phone';
 import './registration.css'
 
 function RegisterDoctor ({user, userInfo}) {
 
     const username = user.username
     const navigate = useNavigate()
-    const [isUpdated, setUpdated] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const [firstname, setFirstname] = useState("")
@@ -39,9 +40,16 @@ function RegisterDoctor ({user, userInfo}) {
     },[userInfo])
 
     const register = async() => {
-        document.getElementById('doctor-update-info-form').reset()
+
         setLoading(true)
-        const doctor = {
+
+        // Validate Email
+        const isValidEmail = EmailValidator.validate(email)
+        // Validate Phone Number
+        const isValidPhoneNumber = phone(phonenumber, {country: 'CA'}).isValid;
+
+        if(isValidEmail && isValidPhoneNumber) {
+            const doctor = {
             doctorid: username,
             firstname: firstname,
             lastname: lastname,
@@ -50,27 +58,44 @@ function RegisterDoctor ({user, userInfo}) {
             specialization: specialization,
             email: email,
             phonenumber: phonenumber
-        }
+            }
 
-        const result = await doctorRequests(requestConfig).registerDoctor(doctor)
-        console.log(result)
+            const result = await doctorRequests(requestConfig).registerDoctor(doctor)
+            console.log(result)
 
-        if(result.statusCode == 201) {
-            toast('Info Updated!', {
+            if(result.statusCode == 201) {
+                toast('Info Updated!', {
+                    id: "Hello",
+                    duration: 5000,
+                    icon: '🔔',
+                    style: {
+                      width: '1200em',
+                      height: '3em',
+                      fontSize: '1.2em',
+                    }
+                })
+            }
+            setLoading(false)
+            navigate('/doctorinfo')
+        } else {
+            let toastMessage = 'Invalid: '
+            if(!isValidEmail) {
+                toastMessage += '\'Email\' '
+            } else if(!isValidPhoneNumber) {
+                toastMessage += '\'Phone Number\' '
+            }
+            toast(toastMessage, {
                 id: "Hello",
                 duration: 5000,
-                icon: '🔔',
+                icon: '❌',
                 style: {
                   width: '1200em',
                   height: '3em',
                   fontSize: '1.2em',
                 }
-              })
+            })
+            setLoading(false)
         }
-        setUpdated(true)
-        setLoading(false)
-        navigate('/doctorinfo')
-        console.log(isUpdated)
     }
 
 
