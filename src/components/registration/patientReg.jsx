@@ -5,13 +5,13 @@ import { patientRequests } from '../../utils/requests/patient';
 import { requestConfig } from '../../utils/requests/requestConfig';
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import toast from 'react-hot-toast';
+import EmailValidator from 'email-validator'
 import './registration.css'
 
 function RegisterPatient ({user, userInfo}) {
 
     const username = user.username
     const navigate = useNavigate()
-    const [isUpdated, setUpdated] = useState(false)
     const [loading, setLoading] = useState(false)
 
 
@@ -44,41 +44,66 @@ function RegisterPatient ({user, userInfo}) {
     
     const register = async() => {
        
-
-        // document.getElementById('patient-update-info-form').reset()
         setLoading(true)
 
-        const patient = {
-            userid: username,
-            firstname: firstname,
-            lastname: lastname,
-            dateofbirth: dateOfBirth,
-            email: email,
-            phonenumber: phonenumber,
-            address: address,
-            postalcode: postalcode,
-            healthcardnumber: healthCardNumber
-        }
+        // Validate Email
+        const isValidEmail = EmailValidator.validate(email)
+        // Validate Phone Number
+        const isValidPhoneNumber = true; // Change true assignment
+        // Validate Date
+        const isValidDate = true // Change true assignment
 
-        const result = await patientRequests(requestConfig).registerPatient(patient)
-        console.log(result)
-
-        if(result.statusCode == 201) {
-            toast('Info Updated!', {
+        if(isValidEmail && isValidEmail && isValidDate) {
+            const patient = {
+                userid: username,
+                firstname: firstname,
+                lastname: lastname,
+                dateofbirth: dateOfBirth,
+                email: email,
+                phonenumber: phonenumber,
+                address: address,
+                postalcode: postalcode,
+                healthcardnumber: healthCardNumber
+            }
+    
+            const result = await patientRequests(requestConfig).registerPatient(patient)
+            console.log(result)
+    
+            if(result.statusCode == 201) {
+                toast('Info Updated!', {
+                    id: "Hello",
+                    duration: 5000,
+                    icon: '🔔',
+                    style: {
+                      width: '1200em',
+                      height: '3em',
+                      fontSize: '1.2em',
+                    }
+                })
+            }
+            setLoading(false)
+            navigate('/patientinfo')
+        } else {
+            let toastMessage = 'Invalid: '
+            if(!isValidDate) {
+                toastMessage += '\'Date of Birth\' '
+            } else if(!isValidEmail) {
+                toastMessage += '\'Email\' '
+            } else if(!isValidPhoneNumber) {
+                toastMessage += '\'Phone Number\' '
+            }
+            toast(toastMessage, {
                 id: "Hello",
                 duration: 5000,
-                icon: '🔔',
+                icon: '❌',
                 style: {
                   width: '1200em',
                   height: '3em',
                   fontSize: '1.2em',
                 }
-              })
+            })
+            setLoading(false)
         }
-        setLoading(false)
-        setUpdated(true)
-        navigate('/patientinfo')
-        console.log(isUpdated)
     }
 
 
