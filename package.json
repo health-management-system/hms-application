@@ -16,6 +16,7 @@
     "aws-sdk": "^2.1309.0",
     "axos": "^0.0.1",
     "email-validator": "^2.0.4",
+    "phone": "^3.1.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",

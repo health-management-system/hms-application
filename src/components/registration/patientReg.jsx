@@ -6,6 +6,7 @@ import { requestConfig } from '../../utils/requests/requestConfig';
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import toast from 'react-hot-toast';
 import EmailValidator from 'email-validator'
+import {phone} from 'phone';
 import './registration.css'
 
 function RegisterPatient ({user, userInfo}) {
@@ -48,12 +49,13 @@ function RegisterPatient ({user, userInfo}) {
 
         // Validate Email
         const isValidEmail = EmailValidator.validate(email)
-        // Validate Phone Number
-        const isValidPhoneNumber = true; // Change true assignment
+        // Validate Phone Number (sets country to Canada)
+        const isValidPhoneNumber = phone(phonenumber, {country: 'CA'}).isValid; 
+        console.log(isValidPhoneNumber)
         // Validate Date
         const isValidDate = true // Change true assignment
 
-        if(isValidEmail && isValidEmail && isValidDate) {
+        if(isValidEmail && isValidPhoneNumber && isValidDate) {
             const patient = {
                 userid: username,
                 firstname: firstname,
